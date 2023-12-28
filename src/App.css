@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@100;300;600;700;800&family=Rubik:wght@300;400;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /** CORES **/
+ --principal: #2E1A16;
+ --de-fundo: #FFFFFF;
+ --autor-card: #B6997D;
+ --links-externos: #337EEA;
+ --delete: #E82727;
+ --titulos: #5F4022;
+ --subtitulos: #81562C;
+ --label: #73583E;
+ --opcs-header: #B0B0B0;
+ --placeholder: #999999;
+ --inputs: #F1F1F1;
+
+ /** TIPOGRAFIA **/
+
+ --tipo-principal: 'K2D', sans-serif;
+ --tipo-secundaria:'Rubik', sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--tipo-secundaria);
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  min-height: 100vh;
+  width: 100vw;
+}

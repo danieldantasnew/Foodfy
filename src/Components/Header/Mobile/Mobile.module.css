@@ -1,0 +1,67 @@
+.btnMenu {
+  display: block;
+  direction: rtl;
+  width: 10px;
+  color: var(--de-fundo);
+  border-top: 3px solid;
+}
+
+.btnMenu::before {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 15px;
+  margin-top: 4px;
+  background: currentColor;
+
+}
+
+.btnMenu::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 20px;
+  margin-top: 4px;
+  background: currentColor;
+}
+
+.btnMenuConfig {
+  width: 40px;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnMenuConfig:hover .btnMenu {
+  transition: .2s;
+  width: 20px;
+}
+
+.btnMenuConfig:hover .btnMenu::before {
+  transition: .2s;
+  width: 20px;
+}
+
+.menuMobile {
+  width: 0vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: var(--principal);
+  animation: transitionMenu ease-in-out .3s forwards;
+}
+
+@keyframes transitionMenu {
+  to {
+    width: 60vw;
+  }
+}
+
+.menuClose {
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  top: 25px;
+}

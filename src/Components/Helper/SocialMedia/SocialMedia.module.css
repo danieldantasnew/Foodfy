@@ -1,0 +1,26 @@
+.Social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.facebook {
+  height: 28px;
+  width: 28px;
+}
+
+.instagram {
+  height: 32px;
+  width: 32px;
+}
+
+.twitter {
+  height: 30px;
+  width: 30px;
+}
+
+.youtube {
+  height: 36px;
+  width: 36px;
+}

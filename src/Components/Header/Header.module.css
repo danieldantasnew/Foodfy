@@ -1,0 +1,107 @@
+header {
+  height: 70px;
+  background-color: var(--principal);
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.Header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  color: white;
+  max-width: 50rem;
+  padding: 0 12px;
+}
+
+.Header1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.3rem;
+}
+
+.Header1Mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2.3rem;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+li > a {
+  color: var(--opcs-header);
+  font-weight: 100;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+li > a:hover {
+  color: var(--de-fundo);
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+li > a::after {
+  border-radius: 4px;
+  content: '';
+  display: inline-block;
+  height: 1px;
+  width: 100%;
+  background-color: var(--de-fundo);
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+}
+
+li > a:hover::after {
+  transition: width .3s;
+  width: 100%;
+}
+
+li > :global(a.active) {
+  color: var(--de-fundo);
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+.Header2 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Header2 > div > img {
+  height: 20px;
+  width: 20px;
+  margin-top: 6px;
+}
+
+.btnLogin {
+  padding: 6px 18px;
+  border: 1px solid var(--de-fundo);
+  background-color: transparent;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btnLogin > a {
+  font-size: 0.9rem;
+  color: var(--de-fundo);
+}
+
+.btnLogin:hover {
+  background-color: rgba(228, 228, 228, 0.521);
+}
