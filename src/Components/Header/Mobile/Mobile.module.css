@@ -1,28 +1,22 @@
 .btnMenu {
   display: block;
   direction: rtl;
+  height: 3px;
+  background-color: var(--de-fundo);
+  align-self: flex-end;
+  border-radius: 3px;
+}
+
+#ham1 {
   width: 10px;
-  color: var(--de-fundo);
-  border-top: 3px solid;
 }
 
-.btnMenu::before {
-  content: '';
-  display: block;
-  height: 3px;
+#ham2 {
   width: 15px;
-  margin-top: 4px;
-  background: currentColor;
-
 }
 
-.btnMenu::after {
-  content: '';
-  display: block;
-  height: 3px;
+#ham3 {
   width: 20px;
-  margin-top: 4px;
-  background: currentColor;
 }
 
 .btnMenuConfig {
@@ -30,23 +24,21 @@
   padding: 4px;
   cursor: pointer;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .btnMenuConfig:hover .btnMenu {
   transition: .2s;
-  width: 20px;
+  width: 20px !important;
 }
 
-.btnMenuConfig:hover .btnMenu::before {
-  transition: .2s;
-  width: 20px;
-}
 
 .menuMobile {
   width: 0vw;
   height: 100vh;
   position: fixed;
+  z-index: 3000;
   top: 0;
   right: 0;
   background-color: var(--principal);
@@ -55,13 +47,31 @@
 
 @keyframes transitionMenu {
   to {
-    width: 60vw;
+    width: 50vw;
   }
 }
 
 .menuClose {
   cursor: pointer;
   position: absolute;
-  right: 16px;
-  top: 25px;
+  right: 13px;
+  top: 22px;
+  padding: 4px;
+}
+
+.contentMenu {
+  margin-top: 10vh;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contentMenu nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentMenu nav ul > li > a {
+  font-size: 1.5rem;
 }

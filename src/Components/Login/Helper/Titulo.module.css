@@ -1,0 +1,9 @@
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo img {
+  height: 72px;
+}

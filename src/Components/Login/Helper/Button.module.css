@@ -1,0 +1,16 @@
+.Botao {
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 12px 24px;
+  font-weight: var(--tipo-secundaria);
+  font-size: 0.9rem;
+  font-weight: 100;
+  background: linear-gradient(180deg, #41270fd8, #2f1e0ede);
+  color: var(--de-fundo);
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.Botao:focus, .Botao:hover {
+  box-shadow: 0px 0px 0px 3px var(--subtitulos), 0px 0px 0px 1px var(--titulos);
+}

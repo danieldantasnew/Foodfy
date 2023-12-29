@@ -1,8 +1,11 @@
-import React from 'react';
+import style from './Home.module.css';
+import Apresentacao from './Apresentacao/Apresentacao';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <section className={`${style.Home} animaLeft`}>
+      <Apresentacao/>
+    </section>
   )
 }
 

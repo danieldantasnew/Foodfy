@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import style from './BtnLogin.module.css'; 
 
-export const BtnLogin = ({Header2, btnLogin}) => {
+const BtnLogin = () => {
   return (
-    <div className={Header2}>
-          <div><img src="../../../public/Images/icons/De uso Geral/busca.svg" alt="Buscar" /></div>
-          <button className={btnLogin}><Link to="/login">Login</Link></button>
-      </div>
+    <Link to="/login"><button className={style.btnLogin}>Login</button></Link>
   )
 }
+
+export default BtnLogin;

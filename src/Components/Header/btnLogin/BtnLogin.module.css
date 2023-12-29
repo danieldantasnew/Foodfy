@@ -1,0 +1,23 @@
+.btnLogin {
+  padding: 6px 18px;
+  border: 1px solid var(--de-fundo);
+  background-color: transparent;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+a > .btnLogin {
+  font-size: 0.9rem;
+  color: var(--de-fundo);
+}
+
+.btnLogin:hover {
+  background-color: rgba(228, 228, 228, 0.521);
+}
+
+@media (max-width: 34.375rem) {
+  .btnLogin {
+    max-width: 100px;
+  }
+}

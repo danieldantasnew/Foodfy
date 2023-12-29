@@ -1,0 +1,12 @@
+.Login {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 34.375rem) {
+  .Login {
+    grid-template-columns: 1fr;
+  }
+}

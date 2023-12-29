@@ -2,7 +2,7 @@ import style from './Header.module.css';
 import Menu from '../Helper/Navigation/Menu';
 import Logo from '../Helper/Logo/Logo';
 import useMedia from '../../Hooks/useMedia';
-import { BtnLogin } from './btnLogin/BtnLogin';
+import BtnLogin from './btnLogin/BtnLogin';
 import Mobile from './Mobile/Mobile';
 
 const Header = () => {
@@ -10,13 +10,18 @@ const Header = () => {
 
   return (
     <header>
-      <section className={style.Header} style={mobile ? {justifyContent: 'start'} : {justifyContent: 'space-between'}}>
+      <section className={`${style.Header} spaceContent`} style={mobile ? {justifyContent: 'start'} : {justifyContent: 'space-between'}}>
         <div className={mobile ? style.Header1Mobile : style.Header1}>
           <Logo/>
           {mobile? <Mobile/> : <Menu/>}
         </div>
-      {mobile ? '' :         
-      <BtnLogin Header2={style.Header2} btnLogin={style.btnLogin}/>}
+      {mobile ? '' :
+      <div className={style.Header2}>
+        <div><img src="../../../public/Images/icons/De uso Geral/busca.svg" alt="Buscar" />
+        </div>
+        <BtnLogin />
+      </div>        
+      }
       </section>
     </header>
   )

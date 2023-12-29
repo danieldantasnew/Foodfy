@@ -1,0 +1,41 @@
+.apresentacao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4vh;
+}
+
+.titulos {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.titulos h1{
+  font-family: var(--tipo-principal);
+  color: var(--principal);
+  font-size: 2.7rem;
+  line-height: 2.4rem;
+}
+
+.titulos p{
+  color: var(--subtitulos);
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+}
+
+@media (max-width: 34.375rem) {
+  .titulos h1{
+    font-size: 2rem;
+  }
+  .titulos p{
+    color: var(--subtitulos);
+    font-size: 0.9rem;
+  }
+}
+
+.imagemChef img {
+  max-width: 90%;
+}

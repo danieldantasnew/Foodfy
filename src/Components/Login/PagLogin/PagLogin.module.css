@@ -1,0 +1,69 @@
+.contentPagLogin {
+  padding: 0 4vw;
+  align-self: flex-start;
+  margin-top: 18vh;
+  max-width: 48rem;
+}
+
+@media (max-width: 34.375rem) {
+  .contentPagLogin {
+    margin: 4vh 0;
+  }
+}
+
+.login h1{
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.esqueceuSenha {
+  margin-top: 3vh;
+  width: 160px;
+}
+
+.esqueceuSenha > a {
+  color: var(--subtitulos);
+  position: relative;
+}
+
+.esqueceuSenha > a::after {
+  content: '';
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--subtitulos);
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  border-radius: 4px;
+}
+
+.cadastro {
+  margin-top: 6vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cadastro h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--titulos);
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro h2::after {
+  content: '';
+  display: inline-block;
+  width: 10%;
+  height: 3px;
+  background-color: var(--inputs);
+  border-radius: 4px;
+}
+
+.cadastro p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--subtitulos);
+}
