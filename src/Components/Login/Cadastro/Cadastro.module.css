@@ -1,0 +1,12 @@
+.Cadastro {
+  padding: 0 4vw;
+  align-self: flex-start;
+  margin-top: 10vh;
+  max-width: 48rem;
+}
+
+.Cadastro h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 4vh;
+}

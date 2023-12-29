@@ -16,8 +16,16 @@
   border: 1px solid transparent;
   border-radius: 4px;
   outline: none;
+  font-family: var(--tipo-secundaria);
+  font-weight: 300;
 }
 
 .Input:focus, .Input:hover {
   box-shadow: 0px 0px 0px 1px var(--titulos), 0px 0px 0px 3px var(--subtitulos);
+  transition: .3s;
+}
+
+.Input ::placeholder {
+  color: var(--placeholder);
+  font-size: 1rem;
 }

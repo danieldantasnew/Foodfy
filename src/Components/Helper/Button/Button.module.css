@@ -5,7 +5,7 @@
   font-weight: var(--tipo-secundaria);
   font-size: 0.9rem;
   font-weight: 100;
-  background: linear-gradient(180deg, #41270fd8, #2f1e0ede);
+  background: linear-gradient(180deg, #2c1909d8, #331e0ade);;
   color: var(--de-fundo);
   border-radius: 4px;
   border: 1px solid transparent;
@@ -13,4 +13,5 @@
 
 .Botao:focus, .Botao:hover {
   box-shadow: 0px 0px 0px 3px var(--subtitulos), 0px 0px 0px 1px var(--titulos);
+  transition: .2s;
 }

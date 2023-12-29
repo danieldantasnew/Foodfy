@@ -1,0 +1,70 @@
+.Suporte {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3vh;
+}
+
+.SuporteContent {
+  flex: 1;
+}
+
+.Informacoes {
+  background: linear-gradient(180deg, #2c1909d8, #331e0ade);
+  color: var(--de-fundo);
+  margin-top: 2vh;
+  padding: 1.2rem 2rem;
+  border-radius: 4px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Informacoes h2 {
+  font-size: 1.4rem;
+  font-family: var(--tipo-secundaria);
+  font-weight: 500;
+}
+
+.contatos {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.contato {
+  display: grid;
+  grid-template-columns: 48px 3fr;
+  grid-template-areas: "logo titulo"
+  "logo contato";
+  justify-content: center;
+  align-items: center;
+  column-gap: .6rem;
+  row-gap: 4px;
+}
+
+.contato img {
+  grid-area: logo;
+}
+
+.contato h3 {
+  grid-area: titulo;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.contato p {
+  grid-area: contato;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.SuporteContent form textarea{
+  display: block;
+  height: 100px;
+  resize: none;
+}

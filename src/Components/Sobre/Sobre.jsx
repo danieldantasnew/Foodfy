@@ -1,8 +1,10 @@
 import style from './Sobre.module.css';
+import Head from '../Helper/Head/Head';
 
 const Sobre = () => {
   return (
     <section className={`${style.Sobre}  animaLeft`}>
+      <Head titulo="Sobre" descricao="História do Foodfy" />
       <div className={`${style.contentSobre} spaceContent`}>
         <div className={style.content}>
           <h2>Sobre o Foodfy</h2>

@@ -4,6 +4,7 @@ import Cadastro from './Cadastro/Cadastro';
 import style from './Login.module.css'
 import Skeleton from '../Helper/Skeleton/Skeleton';
 import useMedia from '../../Hooks/useMedia';
+import PasswordLost from './PasswordLost/PasswordLost';
 
 const Login = () => {
   const mobile = useMedia("(max-width: 34.375rem)");
@@ -15,9 +16,10 @@ const Login = () => {
       <Routes>
         <Route path='/' element={<PagLogin/>}/>
         <Route path='cadastro' element={<Cadastro/>}/>
+        <Route path='passwordLost' element={<PasswordLost/>}/>
       </Routes>
     </section>
   )
 }
 
-export default Login
+export default Login;

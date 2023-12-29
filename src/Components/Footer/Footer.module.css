@@ -1,6 +1,7 @@
 footer {
   align-self: flex-end;
   height: 12vh;
+  margin-top: 0;
 }
 
 .footerMain {
@@ -60,8 +61,12 @@ ul > li > a {
 }
 
 @media (max-width: 34.375rem) {
+  footer {
+    margin-top: 4vh;
+  }
+
   .footerMain {
-    min-height: 34dvh;
+    min-height: 40dvh;
     display: flex;
     justify-content: center;
   }
