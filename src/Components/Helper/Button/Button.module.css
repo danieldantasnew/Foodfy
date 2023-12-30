@@ -5,13 +5,13 @@
   font-weight: var(--tipo-secundaria);
   font-size: 0.9rem;
   font-weight: 100;
-  background: linear-gradient(180deg, #2c1909d8, #331e0ade);;
+  background: linear-gradient(180deg, #2c190af3, #331e0a);
   color: var(--de-fundo);
   border-radius: 4px;
   border: 1px solid transparent;
 }
 
 .Botao:focus, .Botao:hover {
-  box-shadow: 0px 0px 0px 3px var(--subtitulos), 0px 0px 0px 1px var(--titulos);
+  box-shadow: 0px 0px 0px 3px #c4894fd0, 0px 0px 0px 2px var(--titulos);
   transition: .2s;
 }

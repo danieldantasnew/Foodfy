@@ -32,7 +32,7 @@ const Suporte = () => {
           </div>
           <SocialMedia/>
         </div>
-        <form action="">
+        <form onSubmit={(event)=> event.preventDefault()}>
           <Input label="Nome Completo" tipo="text" placeholder="Seu nome" />
           <Input label="E-mail" tipo="email" placeholder="seuemail@email.com"/>
           <Input label="Assunto" tipo="text" placeholder="Sobre o que se trata?"/>

@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 3vh;
+  margin: 3vh 0;
 }
 
 .SuporteContent {
@@ -11,12 +11,13 @@
 }
 
 .Informacoes {
-  background: linear-gradient(180deg, #2c1909d8, #331e0ade);
+  background: linear-gradient(180deg, #2c190af3, #331e0a);
   color: var(--de-fundo);
   margin-top: 2vh;
   padding: 1.2rem 2rem;
   border-radius: 4px;
   height: 30vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,7 +34,8 @@
   align-self: center;
   display: flex;
   flex-direction: row;
-  gap: 4rem;
+  flex-wrap: wrap;
+  gap: 3rem;
 }
 
 .contato {
@@ -45,6 +47,7 @@
   align-items: center;
   column-gap: .6rem;
   row-gap: 4px;
+  max-width: 100%;
 }
 
 .contato img {
@@ -67,4 +70,39 @@
   display: block;
   height: 100px;
   resize: none;
+}
+
+@media (max-width: 34.375rem) {
+  .Informacoes {
+    height: 40vh;
+  }
+
+  .contatos {
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contato {
+    grid-template-columns: 40px 3fr;
+  }
+
+  .contato img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .contato h3 {
+    font-size: 0.8rem;
+  }
+  
+  .contato p {
+    grid-area: contato;
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
+
+  .Suporte form label, form input, input::placeholder, textarea::placeholder {
+    font-size: 0.9rem;
+  }
 }
