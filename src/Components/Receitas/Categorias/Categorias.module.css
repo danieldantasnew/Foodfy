@@ -5,6 +5,7 @@
   margin-left: 1.6875rem;
   overflow: hidden;
   animation: animaCategoria .1s forwards;
+  overflow-y: auto;
 }
 
 @keyframes animaCategoria {

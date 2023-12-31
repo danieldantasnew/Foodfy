@@ -12,17 +12,17 @@ const Receitas = () => {
 
 
   return (
-    <section className={style.Receitas}>
+    <section className={`${style.Receitas} animaLeft`}>
       <Head titulo="Receitas" descricao="Encontre a sua próxima receita!" />
       <div className={`${style.ReceitasContent} spaceContent`}>
-        <div className={style.grid1}>
+        <div className={style.grid}>
           <h1>Receitas</h1>
           <div className={style.opcoes}>
             <Filtros/>
             <Categorias/>
           </div>
         </div>
-        <div>
+        <div className={style.grid}>
           <Busca/>
           <Cards/>
         </div>
@@ -31,4 +31,4 @@ const Receitas = () => {
   )
 }
 
-export default Receitas
+export default Receitas;

@@ -8,23 +8,23 @@
 .ReceitasContent {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2.7fr;
   gap: 2rem;
   margin-top: 4vh;
 }
 
-.grid1 {
+.grid {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
-.grid1 h1{
+.grid h1{
   font-size: 2.5rem;
   font-weight: 600;
 }
 
-.grid1 h2{
+.grid h2{
   font-size: 1.2rem;
   font-weight: 500;
   font-family: var(--tipo-secundaria);
@@ -60,4 +60,10 @@
   display: flex;
   flex-direction: column;
   gap: .5rem;
+}
+
+@media (max-width: 34.375rem) {
+  .ReceitasContent {
+    grid-template-columns: 1fr;
+  }
 }

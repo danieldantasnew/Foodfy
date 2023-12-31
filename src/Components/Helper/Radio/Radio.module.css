@@ -24,10 +24,11 @@
   background-color: var(--subtitulos);
 } 
 
-input[type=radio]:checked + .Radio:before {
+input[type="radio"]:checked + .Radio:before {
   content: "\2022";
   color: #f3f3f3;
   font-size: 3rem;
   text-align: center;
+  vertical-align: middle;
   line-height: 14.98px;
 }
