@@ -16,7 +16,7 @@
   margin-top: 2vh;
   padding: 1.2rem 2rem;
   border-radius: 4px;
-  height: 30vh;
+  height: 300px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@
 
 @media (max-width: 34.375rem) {
   .Informacoes {
-    height: 40vh;
+    height: 300px;
   }
 
   .contatos {
@@ -100,9 +100,5 @@
     grid-area: contato;
     font-size: 0.8rem;
     font-weight: 300;
-  }
-
-  .Suporte form label, form input, input::placeholder, textarea::placeholder {
-    font-size: 0.9rem;
   }
 }

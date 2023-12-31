@@ -1,0 +1,16 @@
+.filtro ul{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-family: var(--tipo-secundaria);
+  color: var(--subtitulos);
+  font-size: 0.9rem;
+}
+
+.filtro ul li{
+  padding: 2px;
+}
+
+.marginBottom {
+  margin-bottom: 2rem;
+}

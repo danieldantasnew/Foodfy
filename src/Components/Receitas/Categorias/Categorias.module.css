@@ -1,0 +1,37 @@
+.categorias ul {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  margin-left: 1.6875rem;
+  overflow: hidden;
+  animation: animaCategoria .1s forwards;
+}
+
+@keyframes animaCategoria {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 100%;
+  }
+}
+
+.categorias ul li {
+  font-weight: 400;
+  color: var(--subtitulos);
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.categorias ul li.ativo::after {
+  content: '';
+  display: inline-block;
+  height: 12px;
+  width: 16px;
+  background: url('../../../../public/Images/icons/Receitas/Checked.svg') no-repeat;
+  background-size: contain;
+}

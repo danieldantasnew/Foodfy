@@ -1,0 +1,33 @@
+.Radio {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 15px;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.Input {
+  display: none;
+}
+
+.Radio:before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 1.5px;
+  background-color: var(--subtitulos);
+} 
+
+input[type=radio]:checked + .Radio:before {
+  content: "\2022";
+  color: #f3f3f3;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 14.98px;
+}

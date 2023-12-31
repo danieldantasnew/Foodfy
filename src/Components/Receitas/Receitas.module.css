@@ -1,0 +1,63 @@
+.Receitas {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ReceitasContent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  margin-top: 4vh;
+}
+
+.grid1 {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.grid1 h1{
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.grid1 h2{
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: var(--tipo-secundaria);
+  color: var(--titulos);
+}
+
+.titulo {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.titulo::after {
+  content: '';
+  display: inline-block;
+  background-image: url('../../../public/Images/icons/Receitas/Dropdown.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 8px;
+  width: 12px;
+  margin-left: 8px;
+  transition: .2s;
+  margin-top: 3px;
+}
+
+.titulo.rotateDropdown::after{
+  transform: rotate(180deg);
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}

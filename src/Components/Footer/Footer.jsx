@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer>
       <section className={style.footerMain}>
-        <section className={style.contentFooter}>
+        <section className={`${style.contentFooter} spaceContent`}>
           <div className={style.footer1}>
             <Logo/>
             <Menu/>

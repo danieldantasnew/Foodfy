@@ -1,0 +1,17 @@
+.Busca {
+  width: 100%;
+  height: 2.75rem;
+  position: relative;
+  margin-top: 4px;
+}
+
+.Busca label img {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+}
+
+.Busca input {
+  width: 100%;
+  padding-left: 40px;
+}
