@@ -4,4 +4,24 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  gap: 3rem;
+  margin-bottom: 3vh;
+}
+
+.maisAcessadas {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.maisAcessadas h2 {
+  color: var(--titulos);
+}
+
+.maisAcessadas > section {
+  gap: 1.3rem;
+}
+
+.maisAcessadas > section h3 {
+  font-size: 1rem;
 }

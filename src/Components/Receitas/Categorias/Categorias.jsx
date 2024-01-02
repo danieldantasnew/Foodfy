@@ -1,11 +1,18 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import style from './Categorias.module.css';
 import receitasStyle from '../Receitas.module.css';
 
-const Categorias = () => {
+const Categorias = ({mobile}) => {
   const [categorias, setCategorias] = React.useState(true);
   const [checked, setChecked] = React.useState(0);
   const lista = ["Todas as categorias", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Saladas e Molhos"];
+
+  React.useEffect(()=> {
+    if(mobile) setCategorias(false);
+    else setCategorias(true);
+  }, [mobile]);
+
+
 
   function handleCategoria() {
     setCategorias(!categorias);
