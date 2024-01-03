@@ -10,10 +10,6 @@ const Cards = () => {
 
   }, []);
 
-  React.useEffect(()=> {
-    console.log(data)
-  }, [data]);
-
   return (
     <section className={style.Cards}>
       {data?.map((card)=> 
@@ -25,7 +21,7 @@ const Cards = () => {
             <div className={style.avaliacao}>
               <img src="../../../../public/Images/icons/De uso Geral/estrelaCard.svg" alt="Estrela da avaliação" />
               <div className={style.nota}>
-                <Avaliacao avaliacoes={card.comentarios}/> 
+                <Avaliacao media={card.mediaAvaliacao}/> 
                 <p style={{display: "inline-block"}}>({card.total_comments})</p>  
               </div>
             </div>
