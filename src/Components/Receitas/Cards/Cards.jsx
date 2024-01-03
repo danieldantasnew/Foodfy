@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Cards.module.css';
-import Avaliacao from './Avaliacao/Avaliacao';
+import Skeleton from './SkeletonCard/Skeleton';
 
 const Cards = () => {
   const[data, setData] = React.useState(null);
@@ -10,24 +10,15 @@ const Cards = () => {
 
   }, []);
 
+  // React.useEffect(()=> {
+  //   console.log(data);
+  // }, [data]);
+
   return (
     <section className={style.Cards}>
       {data?.map((card)=> 
       <div key={card.id} className={style.card}>
-        <img src={card.src} alt={card.title} />
-        <div className={style.info}>
-          <h3>{card.title}</h3>
-          <div className={style.subinfo}>
-            <div className={style.avaliacao}>
-              <img src="../../../../public/Images/icons/De uso Geral/estrelaCard.svg" alt="Estrela da avaliação" />
-              <div className={style.nota}>
-                <Avaliacao media={card.mediaAvaliacao}/> 
-                <p style={{display: "inline-block"}}>({card.total_comments})</p>  
-              </div>
-            </div>
-            <p>por {card.firstName} {card.lastName}</p>
-          </div>
-        </div>
+        <Skeleton title={card.title} src={card.src} alt={card.title} firstName={card.firstName} lastName={card.lastName} mediaAvaliacao={card.mediaAvaliacao} total_comments={card.total_comments}/>
       </div>)}
     </section>
   )

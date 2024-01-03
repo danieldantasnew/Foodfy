@@ -1,0 +1,82 @@
+.imagemSkeleton{
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.imagemFake {
+  background-color: #ddd;
+  background: linear-gradient(90deg, #ddd 0px, #fff 50%, #ddd 100%);
+  background-size: 200%;
+  animation: skeleton 1.2s infinite;
+  height: 60%;
+  width: 100%;
+}
+
+@keyframes skeleton {
+  from {
+    background-position: 0%;
+  }
+  to{
+    background-position: -200%;
+  }
+}
+
+
+.skeletonCard {
+  box-shadow: .5px 1px 6px 0px rgba(0, 0, 0, 0.075);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.info {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
+
+.divh3 {
+  display: block;
+  width: 80%;
+  height: 16px;
+  background-color: #ddd;
+  background: linear-gradient(90deg, #ddd 0px, #fff 50%, #ddd 100%);
+  background-size: 200%;
+  animation: skeleton 1.2s infinite;
+  border-radius: 4px;
+}
+
+.subinfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: .3rem;
+  padding-bottom: 8px;
+}
+
+.avaliacao {
+  width: 40px;
+  height: 14px;
+  background-color: #ddd;
+  background: linear-gradient(90deg, #ddd 0px, #fff 50%, #ddd 100%);
+  background-size: 200%;
+  animation: skeleton 1.2s infinite;
+  border-radius: 4px;
+}
+
+.autor {
+  width: 100px;
+  height: 14px;
+  background-color: #ddd;
+  background: linear-gradient(90deg, #ddd 0px, #fff 50%, #ddd 100%);
+  background-size: 200%;
+  animation: skeleton 1.2s infinite;
+  border-radius: 4px;
+}
