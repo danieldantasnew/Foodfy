@@ -2,17 +2,13 @@ import React from 'react';
 import style from './Cards.module.css';
 import Skeleton from './SkeletonCard/Skeleton';
 
-const Cards = () => {
+const Cards = ({total}) => {
   const[data, setData] = React.useState(null);
 
   React.useEffect(()=> {
-    fetch('http://foodfyapi.local/json/api/recipe').then((response)=> response.json()).then((json)=> setData(json));
+    fetch(`http://foodfyapi.local/json/api/recipe/?_page=1&_total=${total || 24}&_user=0`).then((response)=> response.json()).then((json)=> setData(json));
 
-  }, []);
-
-  // React.useEffect(()=> {
-  //   console.log(data);
-  // }, [data]);
+  }, [total]);
 
   return (
     <section className={style.Cards}>

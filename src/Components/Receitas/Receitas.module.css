@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 2.7fr;
   gap: 2rem;
-  margin-top: 4vh;
+  margin: 4vh 0;
 }
 
 .grid {

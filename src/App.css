@@ -59,6 +59,32 @@ body {
   }
 }
 
+.animaTop {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: animaTop .3s forwards;
+}
+
+@keyframes animaTop {
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.animaBottom{
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: animaBottom.3s forwards;
+}
+
+@keyframes animaBottom{
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 h1 {
   font-family: var(--tipo-principal);
   color: var(--titulos);

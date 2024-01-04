@@ -18,6 +18,11 @@
   gap: .3rem;
 }
 
+.card img{
+  max-height: 114.23px;
+  object-fit: cover;
+}
+
 .card:hover {
   transform: scale(1.03);
   transition: .2s;
@@ -89,6 +94,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+
+  .card img{
+    max-height: 100%;
+    object-fit: cover;
   }
 }
 
