@@ -20,8 +20,12 @@ const Slides = () => {
     const qntSlides = referencia.current.children.length;
 
     function correcaoPaginaMobileToDesktop() {
-      if(slide >= qntSlides - 4) {
-        setSlide(slide - 4);
+      if(slide < 0) {
+        setSlide(slide + 1);
+        
+      }
+      else if(slide >= qntSlides - 4) {
+        setSlide(slide - 1);
       }
     }
 
@@ -57,7 +61,7 @@ const Slides = () => {
 
     window.addEventListener('resize', ()=> {
       handleResize();
-      correcaoPaginaMobileToDesktop();
+      correcaoPaginaMobileToDesktop(); //se o site ficar travando, tentar fazer essa ativação dessa função ser reduzida
     });
     
     if (data && referencia.current) {
