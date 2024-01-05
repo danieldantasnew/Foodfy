@@ -17,6 +17,14 @@ const Slides = () => {
   }, []);
 
   React.useEffect(()=> {
+    const qntSlides = referencia.current.children.length;
+
+    function correcaoPaginaMobileToDesktop() {
+      if(slide >= qntSlides - 4) {
+        setSlide(slide - 4);
+      }
+    }
+
     function slideAuto (qntSlides) {
       let reduzirMobile = (mobile && !desktop) ? 1 : (desktop) ? 4 : 2;
       if(slide >= (qntSlides - reduzirMobile) || slide < 0) {
@@ -38,7 +46,6 @@ const Slides = () => {
 
     function handleResize() {
       stopSlideShow(); // Pare o loop existente ao redimensionar
-      const qntSlides = referencia.current.children.length;
       if (data && referencia.current && qntSlides) {
         startSlide(qntSlides); // Inicie o loop novamente com base no novo tamanho da tela
       }
@@ -48,7 +55,10 @@ const Slides = () => {
       clearInterval(loopRef.current);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', ()=> {
+      handleResize();
+      correcaoPaginaMobileToDesktop();
+    });
     
     if (data && referencia.current) {
       handleResize(); // Inicie o loop novamente com base no novo tamanho da tela
