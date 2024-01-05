@@ -13,63 +13,55 @@
   transition: .3s;
 }
 
-.slide {
-  width: 25%;
-  flex-shrink: 0;
+.SlidesBtn {
   position: relative;
-  overflow: hidden;
 }
 
-.slide > img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.modalCard {
-  background-color: #8a5119d8;
-  height: 100%;
-  width: 100%;
+.btnActions {
   position: absolute;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
-
-.slideHover {
-  position: absolute;
-  z-index: 2001;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  width: 100%;
+  transform: translateY(-50%);
+  z-index: 2002;
+  background-color: #35333146;
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
-  padding: 0 12px;
 }
 
-.slideHover h2 {
-  color: var(--de-fundo);
+.btnActions:hover {
+  transition: .2s;
+  cursor: pointer;
+  background-color: #353331;
 }
 
-.detalhesSlide {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  align-items: center;
-  gap: 12px;
+.btnActions img {
+  height: 16px;
+  width: 16px;
+  opacity: .5;
 }
 
-.alignIcons {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 1rem;
-  color: var(--de-fundo);
-  font-weight: 300;
+.btnActions:hover img {
+  opacity: 1;
+}
+
+.btnLeft {
+  left: 1%;
+}
+
+.btnLeft img {
+  transform: rotate(-90deg);
+}
+
+.btnRight {
+  right: 1%;
+}
+
+.btnRight img {
+  transform: rotate(90deg);
 }
 
 @media (max-width: 90rem) {
@@ -78,17 +70,7 @@
   }
 }
 
-@media (max-width: 62.5rem) {
-  .slide {
-    width: 50%;
-  }
-}
-
 @media (max-width: 36rem) {
-  .slide {
-    width: 100%;
-  }
-
   .slidesContent {
     min-height: 400px;
   }

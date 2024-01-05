@@ -72,7 +72,7 @@ body {
   }
 }
 
-.animaBottom{
+.animaBottom {
   opacity: 0;
   transform: translateY(-20px);
   animation: animaBottom.3s forwards;
@@ -85,7 +85,8 @@ body {
   }
 }
 
-h1 {
+h1, h2 {
   font-family: var(--tipo-principal);
   color: var(--titulos);
+  font-size: 1.7rem;
 }
