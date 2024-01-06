@@ -68,7 +68,9 @@
 }
 
 .avaliacao img {
-  max-width: 16px;
+  max-width: 14px;
+  max-height: 14px;
+  padding-bottom: 1.4px;
 }
 
 .nota {

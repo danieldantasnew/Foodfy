@@ -5,9 +5,10 @@
   max-width: 48rem;
 }
 
-@media (max-width: 34.375rem) {
+@media (max-width: 56.1875rem) {
   .contentPagLogin {
     margin: 4vh 0;
+  max-width: 100%;
   }
 }
 

@@ -8,3 +8,9 @@
   height: 72px;
   margin-bottom: 2.2vh;
 }
+
+@media (max-width: 21.75rem) {
+  .titulo img {
+    display: none;
+  }
+}

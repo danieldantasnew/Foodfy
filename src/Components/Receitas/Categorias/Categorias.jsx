@@ -5,7 +5,7 @@ import receitasStyle from '../Receitas.module.css';
 const Categorias = ({mobile}) => {
   const [categorias, setCategorias] = React.useState(true);
   const [checked, setChecked] = React.useState(0);
-  const lista = ["Todas as categorias", "Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Saladas e Molhos"];
+  const lista = ["Todas as categorias", "Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"];
 
   React.useEffect(()=> {
     if(mobile) setCategorias(false);

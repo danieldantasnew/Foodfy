@@ -4,16 +4,20 @@ import Titulo from '../Helper/Titulo';
 import style from './PagLogin.module.css';
 import Input from '../../Helper/Input/Input';
 import Head from '../../Helper/Head/Head';
+import { useValidate } from '../../../Hooks/useValidate';
 
 const PagLogin = () => {
+  const usuario = useValidate();
+  const senha = useValidate();
+
   return (
     <div className={style.contentPagLogin}>
       <div className={`${style.login} animaLeft`}>
         <Head titulo="Login" descricao="Faça seu login"/>
         <Titulo titulo="Login"/>
         <form onSubmit={(event)=> event.preventDefault()}>
-          <Input tipo="text" label="Usuário" required />
-          <Input tipo="password" label="Senha" estilo={{marginTop: "24px"}} required/>
+          <Input tipo="text" label="Usuário" {...usuario} required />
+          <Input tipo="password" label="Senha" estilo={{marginTop: "24px"}} {...senha} required/>
           <Button nome="Entrar" estilo={{padding: "12px 36px"}}/>
           <div className={style.esqueceuSenha}><Link to="passwordLost">Esqueci minha senha</Link></div>
         </form>

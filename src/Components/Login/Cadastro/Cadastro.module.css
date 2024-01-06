@@ -2,11 +2,18 @@
   padding: 0 4vw;
   align-self: flex-start;
   margin: 10vh 0;
-  max-width: 48rem;
+  max-width: 40rem;
 }
 
 .Cadastro h1 {
   font-size: 4rem;
   font-weight: 600;
   margin-bottom: 4vh;
+}
+
+
+@media (max-width: 56.1875rem) {
+  .Cadastro {
+    max-width: 100%;
+  }
 }

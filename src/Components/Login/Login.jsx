@@ -7,7 +7,7 @@ import useMedia from '../../Hooks/useMedia';
 import PasswordLost from './PasswordLost/PasswordLost';
 
 const Login = () => {
-  const mobile = useMedia("(max-width: 34.375rem)");
+  const mobile = useMedia("(max-width: 56.1875rem)");
 
   return (
     <section className={style.Login}>

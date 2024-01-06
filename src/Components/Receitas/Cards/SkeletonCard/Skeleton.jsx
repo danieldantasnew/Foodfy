@@ -34,7 +34,7 @@ const Skeleton = ({src, alt, title, mediaAvaliacao, total_comments, firstName, l
           <h3>{title}</h3>
           <div className={styleCard.subinfo}>
             <div className={styleCard.avaliacao}>
-              <img src="../../../../public/Images/icons/De uso Geral/estrelaCard.svg" alt="Estrela da avaliação" />
+              <img src="../../../../public/Images/icons/De uso Geral/estrelaCard2.svg" alt="Estrela da avaliação" />
               <div className={styleCard.nota}>
                 <Avaliacao media={mediaAvaliacao}/> 
                 <p style={{display: "inline-block"}}>({total_comments})</p>  

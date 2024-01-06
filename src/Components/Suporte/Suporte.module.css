@@ -28,6 +28,7 @@
   font-size: 1.4rem;
   font-family: var(--tipo-secundaria);
   font-weight: 500;
+  color: var(--de-fundo);
 }
 
 .contatos {
