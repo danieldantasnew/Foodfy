@@ -1,0 +1,35 @@
+.Dim {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: var(--subtitulos);
+}
+
+.Dim h2 {
+  margin-bottom: 2rem;
+}
+
+.Dim p {
+  font-size: 1rem;
+}
+
+.ingredientes ul {
+  display: flex;
+  flex-direction: column;
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.ingredientes ul li{
+  padding-left: 4px;
+  text-transform: capitalize;
+}
+
+.modoPreparo ol {
+  padding-left: 1.5rem;
+}
+
+.modoPreparo ol li{
+  padding-left: 4px;
+  margin-bottom: .5rem;
+}

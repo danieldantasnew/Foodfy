@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Cards.module.css';
 import Skeleton from './SkeletonCard/Skeleton';
+import { Link } from 'react-router-dom';
 
 const Cards = ({total}) => {
   const[data, setData] = React.useState(null);
@@ -13,9 +14,9 @@ const Cards = ({total}) => {
   return (
     <section className={style.Cards}>
       {data?.map((card)=> 
-      <div key={card.id} className={style.card}>
+      <Link key={card.id} className={style.card} to={`/receita/${card.id}`}>
         <Skeleton title={card.title} src={card.src} alt={card.title} firstName={card.firstName} lastName={card.lastName} mediaAvaliacao={card.mediaAvaliacao} total_comments={card.total_comments}/>
-      </div>)}
+      </Link>)}
     </section>
   )
 }

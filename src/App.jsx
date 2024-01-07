@@ -7,6 +7,7 @@ import Sobre from './Components/Sobre/Sobre';
 import Suporte from './Components/Suporte/Suporte';
 import Receitas from './Components/Receitas/Receitas';
 import Login from './Components/Login/Login';
+import Receita from './Components/Receita Individual/Receita';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/suporte' element={<Suporte/>}/>
           <Route path='/receitas' element={<Receitas/>}/>
           <Route path='/login/*' element={<Login/>}/>
+          <Route path='/receita/:id' element={<Receita/>}/>
         </Routes>
         <Footer/>
       </main>

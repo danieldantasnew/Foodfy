@@ -18,6 +18,7 @@ const Slides = () => {
 
   React.useEffect(()=> {
     const qntSlides = referencia.current.children.length;
+    let espere = false;
 
     function correcaoPaginaMobileToDesktop() {
       if(slide < 0) {
@@ -60,8 +61,15 @@ const Slides = () => {
     }
 
     window.addEventListener('resize', ()=> {
-      handleResize();
-      correcaoPaginaMobileToDesktop(); //se o site ficar travando, tentar fazer essa ativação dessa função ser reduzida
+      if(!espere) {
+        espere = true;
+        handleResize();
+        correcaoPaginaMobileToDesktop();
+
+        setTimeout(()=> {
+          espere = false;
+        }, 1000);
+      }
     });
     
     if (data && referencia.current) {
@@ -73,7 +81,7 @@ const Slides = () => {
       window.removeEventListener('resize', startSlide);
     }
     
-  }, [data, slide, mobile]);
+  }, [data, slide, mobile, desktop]);
 
   function handlePrev () {
     if(slide - 1 >= 0) {
