@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Comentarios.module.css';
 import Avaliacoes from './Avaliacoes/Avaliacoes';
+import Comentar from './Comentar/Comentar';
 
 const Comentarios = ({comentarios}) => {
   React.useEffect(()=> {
@@ -50,7 +51,8 @@ const Comentarios = ({comentarios}) => {
         ):
           <p className={style.semComentarios}>Ainda não há comentários...</p>
         }
-      </div>
+        <Comentar />
+      </div>   
     </div>
   )
 }
