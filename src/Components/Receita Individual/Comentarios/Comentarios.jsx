@@ -8,7 +8,7 @@ const Comentarios = ({comentarios}) => {
       let Anterior = new Date(anterior.comment_date);
       let Proxima = new Date(proximo.comment_date);
 
-      return Proxima - Anterior;
+      return  Anterior - Proxima;
     });
   }, [comentarios]);
 
