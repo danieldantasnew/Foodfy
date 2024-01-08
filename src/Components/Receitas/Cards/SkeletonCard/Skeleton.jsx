@@ -31,7 +31,7 @@ const Skeleton = ({src, alt, title, mediaAvaliacao, total_comments, firstName, l
       <>
         <img src={src} alt={alt} onLoad={handleCard} className={styleCard.imagemCard}/>
         <div className={styleCard.info}>
-          <h3>{title}</h3>
+          <h3 title={title}>{title}</h3>
           <div className={styleCard.subinfo}>
             <div className={styleCard.avaliacao}>
               <img src="../../../../public/Images/icons/De uso Geral/estrelaCard2.svg" alt="Estrela da avaliação" />

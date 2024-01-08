@@ -1,0 +1,77 @@
+.Comentarios {
+  color: var(--subtitulos);
+}
+
+.titulo {
+  margin-bottom: 3.75rem;
+}
+
+.tituloSemComentarios {
+  margin-bottom: 1.5rem;
+}
+
+.titulo h2 {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.titulo strong{
+  font-weight: 550;
+  font-size: 1.8rem;
+}
+
+.contentComentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-height: 570px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.comentario {
+  display: flex;
+  gap: 1rem;
+}
+
+.comentario img {
+  height: 48px;
+  width: 48px;
+}
+
+.comentarioInfo {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.comentarioInfo p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.nomeAvaliacao {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+.nomeAvaliacao h3 {
+  font-size: 0.95rem;
+}
+
+.nomeAvaliacao img {
+  height: 18px;
+  width: 18px;
+}
+
+.dataComentario {
+  font-size: 0.9rem !important;
+  color: var(--opcs-header);
+  margin-top: .2rem;
+}
+
+.semComentarios {
+  font-size: 1.1rem;
+  text-align: left;
+}

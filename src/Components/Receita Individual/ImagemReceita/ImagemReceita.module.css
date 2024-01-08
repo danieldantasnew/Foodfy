@@ -2,17 +2,53 @@
   max-height: 430px;
   height: 100%;
   width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
 }
 
 .imagem img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 1rem;
+}
+
+.avaliacao {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 12px;
+  background-color:  rgba(255, 255, 255, 0.123);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avaliacao img {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+}
+
+.media {
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--de-fundo);
+}
+
+.titulo {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  padding: 12px;
+  max-width: 400px;
+  background-color: var(--titulo-receita);
+  color: var(--titulos);
+  border-radius: 4px 0 0 4px;
 }
 
 @media (max-width: 51.25rem) {
-  .imagem img {
+  .imagem {
     border-radius: 0px;
   }
 }

@@ -22,7 +22,9 @@ const Receita = () => {
           <>
             <ImagemReceita 
             nome={data.recipe.nome} 
-            src={data.recipe.src} 
+            src={data.recipe.src}
+            media={data.recipe.mediaAvaliacao}
+            totalComentarios={data.comments.length}
             />
             <InfoReceita 
             datePost={data.recipe.date} 
@@ -34,7 +36,7 @@ const Receita = () => {
 
             <div className={style.contentInfo}>
               <Dim descricao={data.recipe.descricao} ingredientes={data.recipe.ingredientes} modoPreparo={data.recipe.modoPreparo} />
-              <Comentarios />
+              <Comentarios comentarios={data.comments}/>
             </div>
           </>
         }
