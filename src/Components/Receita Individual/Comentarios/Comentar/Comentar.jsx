@@ -8,6 +8,7 @@ const Comentar = () => {
 
   function handleComment(event) {
     event.preventDefault();
+    //Antes de enviar o comentário, verificar se foi enviada a avaliação (se value é igual a null), se sim então não será possível enviar pois a avaliação será obrigatória.
     console.log('Enviar')
   }
 
