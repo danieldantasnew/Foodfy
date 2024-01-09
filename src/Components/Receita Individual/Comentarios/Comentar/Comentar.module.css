@@ -14,9 +14,32 @@
   gap: .3rem;
 }
 
-.formAvaliacao ul li img {
+.estrelasCheias {
+  background: url('../../../../../public/Images/icons/Receita Individual/Estrela cheia.svg') no-repeat center;
+  background-size: contain;
   height: 32px;
   width: 32px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.formAvaliacao ul:hover .estrelasCheias {
+  background: url('../../../../../public/Images/icons/Receita Individual/Estrela cheia.svg') no-repeat center;
+  background-size: contain;
+} 
+.estrelasCheias:hover ~ div {
+  background: url('../../../../../public/Images/icons/Receita Individual/Estrela vazia.svg') no-repeat center !important;
+  background-size: contain;
+  height: 32px;
+  width: 32px;
+}
+
+.estrelaAtivo ~ div{
+  background: url('../../../../../public/Images/icons/Receita Individual/Estrela vazia.svg') no-repeat center;
+  background-size: contain;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
 }
 
 .formComentar {
