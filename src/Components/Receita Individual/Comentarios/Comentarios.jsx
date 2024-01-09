@@ -51,8 +51,8 @@ const Comentarios = ({comentarios}) => {
         ):
           <p className={style.semComentarios}>Ainda não há comentários...</p>
         }
-        <Comentar />
-      </div>   
+      </div>
+      <Comentar />   
     </div>
   )
 }

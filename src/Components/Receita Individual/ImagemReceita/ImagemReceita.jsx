@@ -5,7 +5,6 @@ import Avaliacoes from '../Comentarios/Avaliacoes/Avaliacoes';
 const ImagemReceita = ({src, nome, media, totalComentarios }) => {
   const [menu, setMenu] = React.useState(false);
 
-
   return (
   <div className={style.imagem}>
     <img src={src} alt={nome} />
