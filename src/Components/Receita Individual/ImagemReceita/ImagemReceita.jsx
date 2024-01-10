@@ -20,7 +20,7 @@ const ImagemReceita = ({src, nome, media, totalComentarios, setModal }) => {
           <span></span>
           <span></span>
         </button>
-        {menu && <MenuOpcs setModal={setModal}/>}
+        {menu && <MenuOpcs setModal={setModal} setMenu={setMenu}/>}
       </div>
       <h2 className={style.titulo}>{nome}</h2>
     </div>

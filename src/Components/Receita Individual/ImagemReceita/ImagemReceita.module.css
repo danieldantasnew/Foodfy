@@ -92,7 +92,7 @@
 
 @media (max-width: 51.25rem) {
   .imagem {
-    height: 240px;
+    max-height: 400px;
     border-radius: 0px;
   }
 

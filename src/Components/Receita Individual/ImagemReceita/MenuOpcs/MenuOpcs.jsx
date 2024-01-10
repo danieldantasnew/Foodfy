@@ -1,13 +1,18 @@
 import React from 'react';
 import style from './MenuOpcs.module.css';
 
-const MenuOpcs = ({setModal}) => {
+const MenuOpcs = ({setModal, setMenu}) => {
+
+  function handleClick() {
+    setMenu((menu)=> !menu);
+    setModal((modal)=>!modal)
+  }
 
   return (
     <div className={style.menuOpcs}>
       <ul>
         <li>
-          <div onClick={()=> setModal((modal)=>!modal)}>
+          <div onClick={handleClick}>
             <img src="../../../../public/Images/icons/Receita Individual/Editar.svg" alt="Editar receita" />
             <p>Editar</p>
           </div>

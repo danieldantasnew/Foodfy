@@ -1,13 +1,20 @@
 import React from 'react';
 import style from './SlidesIndividual.module.css';
 import { Link } from 'react-router-dom';
+import useMedia from '../../../Hooks/useMedia'
 
 const SlideIndividual = ({title, src, dificuldade, tempoPreparo, media, id}) => {
 
   const [hover, setHover] = React.useState(null);
+  const mobile = useMedia("(max-width: 62.5rem)");
+
+  React.useEffect(()=> {
+    if(mobile) setHover(true);
+    else setHover(false);
+  }, [mobile]);
 
   return (
-    <div className={style.slide} onMouseEnter={()=> setHover(!hover)} onMouseLeave={()=> setHover(!hover)}>
+    <div className={style.slide} {...(!mobile && {onMouseEnter: ()=> setHover(!hover), onMouseLeave: ()=> setHover(!hover)})}>
     <img src={src} alt={title}/>
     {hover && 
     <Link to={`/receita/${id}`}>

@@ -98,6 +98,10 @@
   .alignIcons {
     font-size: 0.9rem;
   }
+
+  .modalCard {
+    background-color:  #4e301167;
+  }
 }
 
 @media (max-width: 36rem) {
