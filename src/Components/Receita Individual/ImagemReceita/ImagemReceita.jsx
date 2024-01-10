@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './ImagemReceita.module.css';
 import Avaliacoes from '../Comentarios/Avaliacoes/Avaliacoes';
+import MenuOpcs from './MenuOpcs/MenuOpcs';
 
-const ImagemReceita = ({src, nome, media, totalComentarios }) => {
+const ImagemReceita = ({src, nome, media, totalComentarios, setModal }) => {
   const [menu, setMenu] = React.useState(false);
 
   return (
@@ -19,24 +20,7 @@ const ImagemReceita = ({src, nome, media, totalComentarios }) => {
           <span></span>
           <span></span>
         </button>
-        {menu && 
-        <div className={style.menuOpcs}>
-          <ul>
-            <li>
-              <div>
-                <img src="../../../../public/Images/icons/Receita Individual/Editar.svg" alt="Editar receita" />
-                <p>Editar</p>
-              </div>
-            </li>
-            <li className={style.delete}>
-              <div>
-                <img src="../../../../public/Images/icons/Receita Individual/Deletar.svg" alt="Deletar receita" />
-                <p>Deletar</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        }
+        {menu && <MenuOpcs setModal={setModal}/>}
       </div>
       <h2 className={style.titulo}>{nome}</h2>
     </div>

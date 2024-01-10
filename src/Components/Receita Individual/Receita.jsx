@@ -5,17 +5,25 @@ import InfoReceita from './InfoReceita/InfoReceita';
 import ImagemReceita from './ImagemReceita/ImagemReceita';
 import Comentarios from '../Receita Individual/Comentarios/Comentarios';
 import Dim from './DIM/Dim';
+import Modal from '../Helper/Modal/Modal'
+import Editar from './EditarConteudo/Editar';
 
 const Receita = () => {
   const params = useParams();
   const [data, setData] = React.useState(null);
-  
+  const [modal, setModal] = React.useState(false);
 
   React.useEffect(()=> {
     fetch(`http://foodfyapi.local/json/api/recipe/${params.id}`).then((response)=> response.json()).then((json)=> setData(json));
   }, [params, setData]);
 
   return (
+    <>
+    {modal &&
+    <>
+      <Modal setFechar={setModal}/>
+      <Editar />
+    </>}
     <section className={`${style.Receita} animaBottom`}>
       <div className={`${style.content} spaceContent`}>
         {data && 
@@ -25,6 +33,7 @@ const Receita = () => {
             src={data.recipe.src}
             media={data.recipe.mediaAvaliacao}
             totalComentarios={data.comments.length}
+            setModal={setModal}
             />
             <InfoReceita 
             datePost={data.recipe.date} 
@@ -42,6 +51,7 @@ const Receita = () => {
         }
       </div>
     </section>
+    </>
   )
 }
 

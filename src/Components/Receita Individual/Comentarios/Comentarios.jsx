@@ -4,14 +4,12 @@ import Avaliacoes from './Avaliacoes/Avaliacoes';
 import Comentar from './Comentar/Comentar';
 
 const Comentarios = ({comentarios}) => {
-  React.useEffect(()=> {
-    comentarios.sort((anterior, proximo)=> {
-      let Anterior = new Date(anterior.comment_date);
-      let Proxima = new Date(proximo.comment_date);
 
-      return  Anterior - Proxima;
-    });
-  }, [comentarios]);
+  comentarios.sort((anterior, proximo)=> {
+    let Anterior = new Date(anterior.comment_date).getTime();
+    let Proxima = new Date(proximo.comment_date).getTime();
+    return Proxima - Anterior;
+  });
 
   function organizaData(data) {
     const partesDaData = data.split(/[- :]/);
@@ -26,6 +24,8 @@ const Comentarios = ({comentarios}) => {
 
     return dataFormatada;
   }
+
+  if(comentarios === null) return null;
 
   return (
     <div className={`${style.Comentarios} animaTop`}>

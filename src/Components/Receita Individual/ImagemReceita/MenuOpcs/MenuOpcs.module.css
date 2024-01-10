@@ -1,0 +1,84 @@
+.menuOpcs ul{
+  position: absolute;
+  top: -.8rem;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-radius: 4px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 8px;
+  overflow: hidden;
+  animation: animaMenu .3s forwards;
+}
+
+@keyframes animaMenu {
+  to {
+    width: 120px;
+    height: 75px;
+    opacity: 1;
+  }
+}
+
+.menuOpcs ul li{
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  align-items: flex-start;
+}
+
+.menuOpcs ul li div{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+.menuOpcs ul li div:hover {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.menuOpcs ul li:nth-child(1)::after {
+  content: '';
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: var(--inputs);
+}
+
+.menuOpcs img {
+  height: 18px;
+  width: 18px;
+}
+
+.delete {
+  color: var(--delete);
+}
+
+@media (max-width: 51.25rem) {
+  .menuOpcs ul{
+    animation: animaMenu .3s forwards;
+  }
+
+  @keyframes animaMenu {
+    to {
+      width: 95px;
+      height: 65px;
+      opacity: 1;
+    }
+  }
+  
+  .menuOpcs ul li div{
+    font-size: .9rem;
+  }
+
+  .menuOpcs img {
+    height: 16px;
+    width: 16px;
+  }
+}
