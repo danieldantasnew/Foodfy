@@ -1,0 +1,25 @@
+.Selecione {
+  height: 2.50rem;
+  width: 165px;
+  padding: 8px;
+  font-size: 1rem;
+  color: var(--subtitulos);
+  background-color: var(--inputs);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: none;
+  font-family: var(--tipo-secundaria);
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+
+.Selecione:focus, .Selecione:hover {
+  box-shadow: 0px 0px 0px 1px var(--titulos), 0px 0px 0px 3px var(--subtitulos);
+  transition: .3s;
+}
+
+.Selecione ::placeholder {
+  color: var(--placeholder);
+  font-size: 1rem;
+}

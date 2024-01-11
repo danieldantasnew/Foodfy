@@ -10,10 +10,36 @@ const Slides = () => {
   const [slide, setSlide] = React.useState(0);
   const desktop = useMedia("(min-width: 62.5rem)");
   const mobile = useMedia("(max-width: 36rem)");
+
+  function handlePrev () {
+    if(slide - 1 >= 0) {
+      setSlide(slide - 1);
+    }
+  }
+
+  function handleNext () {
+    let reduzirMobile = (mobile) ? 1 : (desktop) ? 4 : 2;
+    const qntSlides = referencia.current.children.length
+    if(slide + 1 <= (qntSlides - reduzirMobile)) {
+      setSlide(slide + 1) ;
+    }
+    else {
+      setSlide(0);
+    }
+  }
+
+  React.useEffect(()=> {
+    function getNumberRandom(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    if(data) {
+      mobile ? setSlide(getNumberRandom(0, data.length-1)) : desktop ?  setSlide(getNumberRandom(0, data.length-4)) :  setSlide(getNumberRandom(0, data.length-2));
+    } 
+  }, [data, setSlide, mobile, desktop]);
   
   React.useEffect(()=> {
     fetch('http://foodfyapi.local/json/api/recipe/?_page=1&_total=24&_user=0&_size="full"').then((response)=> response.json()).then((json)=> setData(json));
-
   }, []);
 
   React.useEffect(()=> {
@@ -82,23 +108,6 @@ const Slides = () => {
     }
     
   }, [data, slide, mobile, desktop]);
-
-  function handlePrev () {
-    if(slide - 1 >= 0) {
-      setSlide(slide - 1);
-    }
-  }
-
-  function handleNext () {
-    let reduzirMobile = (mobile) ? 1 : (desktop) ? 4 : 2;
-    const qntSlides = referencia.current.children.length
-    if(slide + 1 <= (qntSlides - reduzirMobile)) {
-      setSlide(slide + 1) ;
-    }
-    else {
-      setSlide(0);
-    }
-  }
 
   return (
     <section className={style.SlidesBtn}>
