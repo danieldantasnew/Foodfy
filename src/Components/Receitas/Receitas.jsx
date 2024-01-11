@@ -22,7 +22,7 @@ const Receitas = () => {
         </div>
         <div className={style.grid}>
           <Busca/>
-          <Cards/>
+          <Cards user={0}/>
         </div>
       </div>
     </section>

@@ -24,3 +24,13 @@ export function USER_GET(token) {
     }
   }
 }
+
+export function RECIPES_GET({page, total, user}) {
+  return {
+    url: `${url_API}/api/recipe/?_page=${page}&_total=${total}&_user=${user}`,
+    options: {
+      method: 'GET',
+      cache: 'no-store',
+    },
+  }
+}
