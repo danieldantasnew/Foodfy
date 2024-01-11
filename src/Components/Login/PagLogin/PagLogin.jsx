@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../Helper/Button/Button';
 import Titulo from '../Helper/Titulo';
@@ -5,10 +6,18 @@ import style from './PagLogin.module.css';
 import Input from '../../Helper/Input/Input';
 import Head from '../../Helper/Head/Head';
 import { useValidate } from '../../../Hooks/useValidate';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../store/reducers/login';
 
 const PagLogin = () => {
   const usuario = useValidate();
   const senha = useValidate();
+
+  const dispatch = useDispatch();
+
+  React.useEffect(()=> {
+    dispatch(login({username: 'daniel', password: "daniel123"}));
+  }, [dispatch]);
 
   return (
     <div className={style.contentPagLogin}>
