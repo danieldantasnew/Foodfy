@@ -1,14 +1,26 @@
+import React from 'react';
 import style from './Receitas.module.css';
 import Head from '../Helper/Head/Head';
 import Busca from '../Helper/Busca/Busca';
 import Cards from './Cards/Cards';
 import Categorias from './Categorias/Categorias';
 import Filtros from './Filtros/Filtros';
+import Modal from '../Helper/Modal/Modal';
 import useMedia from '../../Hooks/useMedia';
+import { useDispatch, useSelector } from 'react-redux';
+import { carregarReceitas } from '../../store/reducers/receitas';
 
-const Receitas = () => {
+const Receitas = ({total, user}) => {
+  const dispatch = useDispatch();
   const mobile = useMedia("(max-width: 34.375rem)");
+  const loading = useSelector((state)=> state.receitas.loading);
+  const state = useSelector((state)=> state.receitas);
 
+  React.useEffect(()=> {
+    dispatch(carregarReceitas({total, user}))
+  }, [dispatch, total, user]);
+
+  if(loading) return <Modal />
   return (
     <section className={`${style.Receitas} animaLeft`}>
       <Head titulo="Receitas" descricao="Encontre a sua próxima receita!" />
@@ -22,7 +34,7 @@ const Receitas = () => {
         </div>
         <div className={style.grid}>
           <Busca/>
-          <Cards user={0}/>
+          <Cards user={0} total={24} state={state}/>
         </div>
       </div>
     </section>

@@ -4,7 +4,12 @@ import createAsyncSlice from "../CreateAsyncSlice/CreateAsyncSlice";
 
 const token = createAsyncSlice({
   name: 'token',
-  fetchConfig: (user)=> TOKEN_POST(user)
+  fetchConfig: (user)=> TOKEN_POST(user),
+  reducers: {
+    resetTokenErro(state) {
+      state.error = null;
+    }
+  }
 });
 
 const fetchToken = token.fetchElement;
@@ -25,6 +30,12 @@ export const login = (user) => async (dispatch)=> {
   }catch {
     return {};
   }
+}
+
+const {resetTokenErro} = token.actions;
+
+export const resetarErro = () => (dispatch) => {
+  dispatch(resetTokenErro());
 }
 
 const reducers = combineReducers({token: token.reducer, user: user.reducer});

@@ -4,9 +4,12 @@ import Logo from '../Helper/Logo/Logo';
 import useMedia from '../../Hooks/useMedia';
 import BtnLogin from './btnLogin/BtnLogin';
 import Mobile from './Mobile/Mobile';
+import { useSelector } from 'react-redux';
+import UsuarioLogado from './UsuarioLogado/UsuarioLogado';
 
 const Header = () => {
   const mobile = useMedia("(max-width: 34.375rem)");
+  const logado = useSelector((state)=> state.login.user.data);
 
   return (
     <header>
@@ -19,7 +22,9 @@ const Header = () => {
       <div className={style.Header2}>
         <div><img src="../../../public/Images/icons/De uso Geral/busca.svg" alt="Buscar" />
         </div>
-        <BtnLogin />
+        {logado ?
+        <UsuarioLogado displayName={logado.first_name}/> :
+        <BtnLogin />}
       </div>        
       }
       </section>

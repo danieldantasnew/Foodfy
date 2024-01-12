@@ -8,6 +8,7 @@ import Suporte from './Components/Suporte/Suporte';
 import Receitas from './Components/Receitas/Receitas';
 import Login from './Components/Login/Login';
 import Receita from './Components/Receita Individual/Receita';
+import Account from './Components/Account/Account';
 
 function App() {
 
@@ -16,11 +17,12 @@ function App() {
       <main className="App">
         <Header/>
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Home total={24} user={0}/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/suporte' element={<Suporte/>}/>
-          <Route path='/receitas' element={<Receitas/>}/>
+          <Route path='/receitas' element={<Receitas total={24} user={0}/>}/>
           <Route path='/login/*' element={<Login/>}/>
+          <Route path='/conta/*' element={<Account/>} />
           <Route path='/receita/:id' element={<Receita/>}/>
         </Routes>
         <Footer/>

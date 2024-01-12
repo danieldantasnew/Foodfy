@@ -1,0 +1,12 @@
+.UsuarioLogado {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  color: var(--de-fundo);
+}
+
+.UsuarioLogado img {
+  margin-top: 0 !important;
+  height: 36px !important;
+  width: 36px !important;
+}

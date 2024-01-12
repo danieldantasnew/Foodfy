@@ -2,9 +2,10 @@ import React, { useRef } from 'react';
 import style from './Slides.module.css';
 import SlideIndividual from './SlideIndividual';
 import useMedia from '../../../Hooks/useMedia';
+import { useSelector } from 'react-redux';
 
 const Slides = () => {
-  const [data, setData] = React.useState(null);
+  const data = useSelector((state)=> state.receitas.data);
   const referencia = useRef(null);
   const loopRef = useRef(null);
   const [slide, setSlide] = React.useState(0);
@@ -37,25 +38,8 @@ const Slides = () => {
       mobile ? setSlide(getNumberRandom(0, data.length-1)) : desktop ?  setSlide(getNumberRandom(0, data.length-4)) :  setSlide(getNumberRandom(0, data.length-2));
     } 
   }, [data, setSlide, mobile, desktop]);
-  
-  React.useEffect(()=> {
-    fetch('http://foodfyapi.local/json/api/recipe/?_page=1&_total=24&_user=0&_size="full"').then((response)=> response.json()).then((json)=> setData(json));
-  }, []);
 
   React.useEffect(()=> {
-    const qntSlides = referencia.current.children.length;
-    let espere = false;
-
-    function correcaoPaginaMobileToDesktop() {
-      if(slide < 0) {
-        setSlide(slide + 1);
-        
-      }
-      else if(slide >= qntSlides - 4) {
-        setSlide(slide - 1);
-      }
-    }
-
     function slideAuto (qntSlides) {
       let reduzirMobile = (mobile && !desktop) ? 1 : (desktop) ? 4 : 2;
       if(slide >= (qntSlides - reduzirMobile) || slide < 0) {
@@ -77,7 +61,8 @@ const Slides = () => {
 
     function handleResize() {
       stopSlideShow(); // Pare o loop existente ao redimensionar
-      if (data && referencia.current && qntSlides) {
+      if (data && referencia.current) {
+        const qntSlides = referencia.current.children.length;
         startSlide(qntSlides); // Inicie o loop novamente com base no novo tamanho da tela
       }
     }
@@ -86,25 +71,16 @@ const Slides = () => {
       clearInterval(loopRef.current);
     }
 
-    window.addEventListener('resize', ()=> {
-      if(!espere) {
-        espere = true;
-        handleResize();
-        correcaoPaginaMobileToDesktop();
-
-        setTimeout(()=> {
-          espere = false;
-        }, 1000);
-      }
-    });
+    window.addEventListener('resize', handleResize);
     
     if (data && referencia.current) {
-      handleResize(); // Inicie o loop novamente com base no novo tamanho da tela
+      const qntSlides = referencia.current.children.length;
+      handleResize(qntSlides); // Inicie o loop novamente com base no novo tamanho da tela
     }
 
     return ()=> {
       stopSlideShow();
-      window.removeEventListener('resize', startSlide);
+      window.removeEventListener('resize', handleResize);
     }
     
   }, [data, slide, mobile, desktop]);

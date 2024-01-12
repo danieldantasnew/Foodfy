@@ -1,13 +1,17 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import PagLogin from './PagLogin/PagLogin';
 import Cadastro from './Cadastro/Cadastro';
 import style from './Login.module.css'
 import Skeleton from '../Helper/Skeleton/Skeleton';
 import useMedia from '../../Hooks/useMedia';
 import PasswordLost from './PasswordLost/PasswordLost';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
   const mobile = useMedia("(max-width: 56.1875rem)");
+  const login = useSelector((state)=> state.login.user.data);
+
+  if(login) return <Navigate to='/conta'/>
 
   return (
     <section className={style.Login}>
