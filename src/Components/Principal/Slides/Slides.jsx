@@ -42,7 +42,8 @@ const Slides = () => {
   React.useEffect(()=> {
     function slideAuto (qntSlides) {
       let reduzirMobile = (mobile && !desktop) ? 1 : (desktop) ? 4 : 2;
-      if(slide >= (qntSlides - reduzirMobile) || slide < 0) {
+      if( slide >= (qntSlides - reduzirMobile) || slide < 0) {
+        //Verificará se o próximo slide é o último antes de deixar a tela em branco, se for ele voltará ao início.
         setSlide(0);
       }
       else {
@@ -71,7 +72,7 @@ const Slides = () => {
       clearInterval(loopRef.current);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize); //Quando a tela muda de tamanho, o slide é reiniciado fazendo com que fique adaptado novamente.
     
     if (data && referencia.current) {
       const qntSlides = referencia.current.children.length;

@@ -32,6 +32,8 @@ export const login = (user) => async (dispatch)=> {
   }
 }
 
+//Criar autoLogin
+
 const {resetTokenErro} = token.actions;
 
 export const resetarErro = () => (dispatch) => {
