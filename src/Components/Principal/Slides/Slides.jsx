@@ -43,7 +43,7 @@ const Slides = () => {
     function slideAuto (qntSlides) {
       let reduzirMobile = (mobile && !desktop) ? 1 : (desktop) ? 4 : 2;
       if( slide >= (qntSlides - reduzirMobile) || slide < 0) {
-        //Verificará se o próximo slide é o último antes de deixar a tela em branco, se for ele voltará ao início.
+        //Verificará se o próximo slide é o último antes de deixar a tela em branco, se for ele voltará ao início. Exemplo: na tela maior (Desktop) são 4 espaços, se o slide for até o último, ele ficará com a tela em branco passando os slides pois o último slide ainda não saiu da tela, por isso é ideal q seja feito a quantidade de slides - 4 para que após o último slide aparecer, seja voltado para o início.
         setSlide(0);
       }
       else {
@@ -76,7 +76,7 @@ const Slides = () => {
     
     if (data && referencia.current) {
       const qntSlides = referencia.current.children.length;
-      handleResize(qntSlides); // Inicie o loop novamente com base no novo tamanho da tela
+      handleResize(qntSlides);
     }
 
     return ()=> {
