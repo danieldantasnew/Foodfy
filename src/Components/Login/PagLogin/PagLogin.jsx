@@ -27,12 +27,11 @@ const PagLogin = () => {
   }
 
   React.useEffect(()=> {
-    let tempoErro;
     if(error) {
       const palavras = ["<strong>", "</strong>", '.<a href="http://foodfyapi.local/wp-login.php\\?action=lostpassword">Perdeu a senha\\?</a>'];
       const regex = new RegExp(palavras.join("|"), "g");
       const novaMensagemErro =  error.replace(regex, "");
-      tempoErro = setTimeout(()=> {
+      setTimeout(()=> {
         setNovaMensagemErro(null);
         dispatch(resetarErro());
       }, 3000);
@@ -40,7 +39,6 @@ const PagLogin = () => {
     }
 
     return () => {
-      clearTimeout(tempoErro);
       dispatch(resetarErro());
     }
   }, [error, dispatch]);

@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from "./Components/Footer/Footer";
@@ -9,8 +10,15 @@ import Receitas from './Components/Receitas/Receitas';
 import Login from './Components/Login/Login';
 import Receita from './Components/Receita Individual/Receita';
 import Account from './Components/Account/Account';
+import { useDispatch } from 'react-redux';
+import { autoLogin } from './store/reducers/login';
+import ProtectedRouter from './Components/Account/ProtectedRouter/ProtectedRouter';
 
 function App() {
+  const dispatch = useDispatch();
+  React.useEffect(()=> {
+    dispatch(autoLogin());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
@@ -22,7 +30,10 @@ function App() {
           <Route path='/suporte' element={<Suporte/>}/>
           <Route path='/receitas' element={<Receitas total={24} user={0}/>}/>
           <Route path='/login/*' element={<Login/>}/>
-          <Route path='/conta/*' element={<Account/>} />
+          <Route path='/conta/*' element={
+          <ProtectedRouter>
+            <Account/>
+          </ProtectedRouter>}/>
           <Route path='/receita/:id' element={<Receita/>}/>
         </Routes>
         <Footer/>
