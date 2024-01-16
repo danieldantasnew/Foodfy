@@ -34,3 +34,16 @@ export function RECIPES_GET({page, total, user}) {
     },
   }
 }
+
+export function RECIPE_POST(formData, token) {
+  return {
+    url: url_API + '/api/recipe',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization:'Bearer '+ token
+      },
+      body: formData
+    }
+  }
+}

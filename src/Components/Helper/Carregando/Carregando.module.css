@@ -31,3 +31,10 @@
 .Carregando svg path{
   fill: white;
 }
+
+@media (max-width: 34.375rem) {
+  .Carregando svg {
+    height: 150px;
+    width: 150px;
+  }
+}
