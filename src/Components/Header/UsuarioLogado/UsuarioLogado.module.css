@@ -4,6 +4,7 @@
   align-items: center;
   color: var(--de-fundo);
   cursor: pointer;
+  position: relative;
 }
 
 .UsuarioLogado img {
@@ -12,21 +13,67 @@
   width: 32px !important;
 }
 
+.dropDown {
+  margin-top: 4px;
+}
+
+.dropDown img {
+  height: 16px !important;
+  width: 16px !important;
+  transform: rotate(180deg);
+  transition: .3s;
+}
+
+.dropDownActive {
+  margin-top: 4px;
+}
+
+.dropDownActive img {
+  height: 16px !important;
+  width: 16px !important;
+  transition: .3s;
+}
+
 .Menu {
   position: absolute;
   top: 70px;
   right: 0;
   width: 200px;
+  height: 0;
   background-color: var(--de-fundo);
   padding: .8rem;
   z-index: 2005;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  animation: animaMenu .3s forwards;
+  opacity: 0;
+  overflow: hidden;
+}
+
+@keyframes animaMenu {
+  to {
+    opacity: 1;
+    height: 245px;
+  }
 }
 
 .Menu ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.Menu a {
+  content: '';
+  display: inline-block;
+  line-height: 1rem;
+}
+
+.Menu a::after {
+  content: '';
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  background-color: #d9d9d948;
 }
 
 .Menu ul li {
@@ -41,7 +88,7 @@
   color: var(--titulos);
 }
 
-.Menu ul li img {
+.Menu ul li svg {
   height: 28px;
   width: 28px;
 }
@@ -54,11 +101,46 @@
 .Menu ul li:hover :global(svg > path),
 .Menu ul a:global(.active) > li > svg > path,
 .Menu ul a:global(.active) > li{
-  fill: var(--titulos);
+  fill: var(--principal);
   color: var(--titulos);
 }
 
 .strokeColor:hover :global(path),
 a:global(.active) path {
-  stroke: var(--titulos);
+  stroke: var(--principal);
+}
+
+@media (max-width:34.375rem) {
+  .Menu {
+    top: 18.9rem;
+    left: 10px;
+    width: auto;
+    background-color: var(--principal);
+    overflow: auto;
+  }
+
+  .Menu ul li {
+    line-height: 1.3rem;
+  }
+
+  .Menu ul li svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  .Menu ul li:hover {
+    color: var(--de-fundo);
+  }
+
+  .Menu ul li:hover :global(svg > path),
+  .Menu ul a:global(.active) > li > svg > path,
+  .Menu ul a:global(.active) > li{
+    fill: var(--de-fundo);
+    color: var(--de-fundo);
+  }
+
+  .strokeColor:hover :global(path),
+  a:global(.active) path {
+    stroke: var(--de-fundo);
+  }
 }

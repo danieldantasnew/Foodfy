@@ -3,11 +3,14 @@ import style from './Mobile.module.css';
 import Menu from '../../Helper/Navigation/Menu';
 import BtnLogin from '../btnLogin/BtnLogin';
 import Modal from '../../Helper/Modal/Modal';
+import UsuarioLogado from '../UsuarioLogado/UsuarioLogado';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Mobile = () => {
 
   const [menu, setMenu] = React.useState(false);
+  const logado = useSelector((state)=> state.login.user.data);
   let params = useLocation();
 
   React.useEffect(()=> {
@@ -29,7 +32,10 @@ const Mobile = () => {
           <div className={style.contentMenu}>
             <div>Busca</div>
             <Menu/>
-            <BtnLogin/>
+            {logado ?
+              <UsuarioLogado displayName={logado.first_name}/> :
+              <BtnLogin />
+              }
           </div>
         </div>
       </> 

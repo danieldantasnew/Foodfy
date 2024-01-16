@@ -5,7 +5,7 @@ import Busca from '../Helper/Busca/Busca';
 import Cards from './Cards/Cards';
 import Categorias from './Categorias/Categorias';
 import Filtros from './Filtros/Filtros';
-import Modal from '../Helper/Modal/Modal';
+import Carregando from '../Helper/Carregando/Carregando';
 import useMedia from '../../Hooks/useMedia';
 import { useDispatch, useSelector } from 'react-redux';
 import { carregarReceitas } from '../../store/reducers/receitas';
@@ -20,7 +20,7 @@ const Receitas = ({total, user}) => {
     dispatch(carregarReceitas({total, user}))
   }, [dispatch, total, user]);
 
-  if(loading) return <Modal />
+  if(loading) return <Carregando/>
   return (
     <section className={`${style.Receitas} animaLeft`}>
       <Head titulo="Receitas" descricao="Encontre a sua próxima receita!" />
@@ -34,7 +34,7 @@ const Receitas = ({total, user}) => {
         </div>
         <div className={style.grid}>
           <Busca/>
-          <Cards user={0} total={24} state={state}/>
+          <Cards state={state}/>
         </div>
       </div>
     </section>

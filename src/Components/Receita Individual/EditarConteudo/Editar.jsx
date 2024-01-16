@@ -26,28 +26,16 @@ const Editar = () => {
           />
         </label>
         <div className={style.organizaSelects}>
-          <label htmlFor="dificuldade" className={styleLabel.Label}>
-            Dificuldade
-            <Select array={dificuldades} id="dificuldade" />
-          </label>
-          <label htmlFor="categoria" className={styleLabel.Label}>
-            Categoria
-            <Select array={categorias} id="categoria"/>
-          </label>
+          <Select array={dificuldades} name="Dificuldade" />
+          <Select array={categorias} name="Categoria"/>
         </div>
-        <label htmlFor="Ingredientes" className={styleLabel.Label}>
-          Ingredientes
           <Textarea 
           placeholder={"Insira um ingrediente por linha"}
-            id={"Ingredientes"}
+            name={"Ingredientes"}
           />
-        </label>
-        <label htmlFor="Modo de Preparo" className={styleLabel.Label}>
-          Modo de Preparo
           <Textarea 
-            id={"Modo de Preparo"}
+            name={"Modo de Preparo"}
           />
-        </label>
         <Input label="Tempo de Preparo (Minutos)" tipo="text" {...tempoPreparo}/>
         <Button  nome="Atualizar receita" />
       </form>

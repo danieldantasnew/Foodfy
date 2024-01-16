@@ -1,0 +1,32 @@
+.postRecipe {
+  flex: 1;
+}
+
+.cdi {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
+.selects select {
+  width: 100%;
+}
+
+.cdi textarea {
+  width: 100%;
+  height: 100%;
+}
+
+input[type="number"] {
+  width: 200px;
+}
+
+@media (max-width: 34.375rem) {
+  .cdi {
+    grid-template-columns: 1fr;
+  }
+
+  .cdi textarea {
+    height: 120px;
+  }
+}

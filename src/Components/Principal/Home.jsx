@@ -7,6 +7,7 @@ import Slides from './Slides/Slides';
 import { useDispatch, useSelector } from 'react-redux';
 import { carregarReceitas } from '../../store/reducers/receitas';
 import Modal from '../Helper/Modal/Modal';
+import Carregando from '../Helper/Carregando/Carregando';
 
 const Home = ({total, user}) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Home = ({total, user}) => {
     dispatch(carregarReceitas({total, user}))
   }, [dispatch, total, user]);
 
-  if(loading) return <Modal />
+  if(loading) return <Carregando/>
 
   return (
     <section className={`${style.Home} animaLeft`}>
@@ -26,7 +27,7 @@ const Home = ({total, user}) => {
       <Slides/>
       <section className={`${style.maisAcessadas} spaceContent`}>
         <h2>Mais acessadas</h2>
-        <Cards total={6} user={0} state={stateAcessadas}/>
+        <Cards state={stateAcessadas}/>
       </section>
     </section>
   )

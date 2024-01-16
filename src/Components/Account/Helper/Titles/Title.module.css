@@ -1,0 +1,16 @@
+.Title {
+  font-size: 2rem;
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 2.8rem;
+  line-height: 1rem;
+}
+
+.Title::after {
+  height: 3px;
+  width: 100%;
+  display: inline-block;
+  content: '';
+  background-color: var(--titulos);
+  border-radius: 4px;
+}
