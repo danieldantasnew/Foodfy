@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {carregarReceitas} from '../../../store/reducers/receitas';
 import Carregando from '../../Helper/Carregando/Carregando';
 import Title from '../Helper/Titles/Title';
+import Head from '../../Helper/Head/Head';
 
 const MyRecipes = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const MyRecipes = () => {
 
   return (
     <div className={`${style.myRecipesContent} spaceContent animaLeft`}>
+      <Head titulo="Minhas Receitas" descricao="Aqui estão suas receitas" />
       <Title name="Minhas Receitas" />
       <Cards state={state} />
     </div>

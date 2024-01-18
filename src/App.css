@@ -63,7 +63,7 @@ body {
 .animaTop {
   opacity: 0;
   transform: translateY(20px);
-  animation: animaTop .3s forwards;
+  animation: animaTop .5s forwards;
 }
 
 @keyframes animaTop {

@@ -13,10 +13,27 @@ const Home = ({total, user}) => {
   const dispatch = useDispatch();
   const loading = useSelector((state)=> state.receitas.loading);
   const stateAcessadas = useSelector((state)=> state.receitas);
+  const [scrollActive, setScrollActive] = React.useState(null);
 
   React.useEffect(()=> {
     dispatch(carregarReceitas({total, user}))
   }, [dispatch, total, user]);
+
+  React.useEffect(()=> {
+    function activeCards() {
+      const heightScroll = window.scrollY;
+      const height = (document.body.offsetHeight - window.innerHeight);
+      if(heightScroll > height) {
+        setScrollActive(true);
+      }
+    }
+
+    window.addEventListener('scroll', activeCards);
+
+    return ()=> {
+      window.removeEventListener('scroll', activeCards);
+    }
+  }, []);
 
   if(loading) return <Carregando/>
 
@@ -25,10 +42,11 @@ const Home = ({total, user}) => {
       <Head titulo="Início" descricao="Página inicial do Foodfy"/>
       <Apresentacao/>
       <Slides/>
-      <section className={`${style.maisAcessadas} spaceContent`}>
+      {scrollActive && 
+      <section className={`${style.maisAcessadas} spaceContent animaTop`}>
         <h2>Mais acessadas</h2>
         <Cards state={stateAcessadas}/>
-      </section>
+      </section>}
     </section>
   )
 }

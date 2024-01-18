@@ -10,7 +10,8 @@ import Button from '../../Helper/Button/Button';
 import { RECIPE_POST } from '../../../Api';
 import { useSelector } from 'react-redux';
 import Error from '../../Helper/Error/Error';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Head from '../../Helper/Head/Head';
 
 const PostRecipe = () => {
   const categorias = ["Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"];
@@ -19,6 +20,8 @@ const PostRecipe = () => {
   const token = useSelector((state)=> state.login.token.data);
   const {carregando, dados, erro, request} = useFetch();
   const inputFile = React.useRef(null);
+  const [enviado, setEnviado] = React.useState(null);
+
   const [imagem, setImagem] = React.useState({});
   const nomeReceita = useValidate();
   const descricao = useValidate();
@@ -30,7 +33,9 @@ const PostRecipe = () => {
 
   React.useEffect(()=> {
     if(dados) {
-      navigate('/conta');
+      setTimeout(()=> {
+        navigate('/conta');
+      }, 600);
     }
   }, [dados, navigate]);
 
@@ -64,12 +69,13 @@ const PostRecipe = () => {
       
       const {url, options} = RECIPE_POST(formData, token);
       const {response} = await request(url, options);
-      if(response.ok) console.log('Receita Enviada');
+      if(response.ok) setEnviado(true);
     }
   }
 
   return (
     <div className={`${style.postRecipe} spaceContent animaLeft`}>
+      <Head titulo="Poste sua receita" descricao="Poste uma nova receita!" />
       <Title name="Poste sua receita" />
       <form onSubmit={handleSubmit}>
         <div 
@@ -110,17 +116,21 @@ const PostRecipe = () => {
           </div>
           <TextArea 
             name="Ingredientes" 
-            placeholder="Digite um ingrediente por linha" 
+            placeholder='Separe os ingredientes por ponto (".")' 
             {...ingredientes} 
           />
         </div>
         <TextArea 
           name="Modo de Preparo" 
-          placeholder="Separe as etapas por linha" 
+          placeholder='Separe as etapas por ponto (".")'
           {...modoPreparo}
         />
         <Input label="Tempo de Preparo (Minutos)" tipo="number" {...tempoPreparo}/>
-        <Button nome="Enviar nova receita" /> 
+        {enviado ? <Button nome="Postado!" /> :
+          carregando ? 
+            <Button nome="Postando..." estilo={{opacity: ".5"}}/>:
+            <Button nome="Postar nova receita" />
+        }
         {erro && <Error mensagem={erro}/>}
       </form>
     </div>

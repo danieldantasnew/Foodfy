@@ -88,11 +88,6 @@
   color: var(--titulos);
 }
 
-.Menu ul li svg {
-  height: 28px;
-  width: 28px;
-}
-
 .Menu ul li:nth-child(4) {
   padding-left: .5rem;
   padding-left: .5rem;
@@ -112,7 +107,7 @@ a:global(.active) path {
 
 @media (max-width:34.375rem) {
   .Menu {
-    top: 18.9rem;
+    top: 20rem;
     left: 10px;
     width: auto;
     background-color: var(--principal);
