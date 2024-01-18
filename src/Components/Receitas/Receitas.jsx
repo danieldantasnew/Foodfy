@@ -14,7 +14,7 @@ const Receitas = ({total, user}) => {
   const dispatch = useDispatch();
   const mobile = useMedia("(max-width: 34.375rem)");
   const loading = useSelector((state)=> state.receitas.loading);
-  const state = useSelector((state)=> state.receitas);
+  const state = useSelector((state)=> state.receitas.data);
 
   React.useEffect(()=> {
     dispatch(carregarReceitas({total, user}))

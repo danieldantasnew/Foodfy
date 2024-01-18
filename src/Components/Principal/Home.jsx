@@ -5,14 +5,13 @@ import Head from '../Helper/Head/Head';
 import Cards from '../Receitas/Cards/Cards';
 import Slides from './Slides/Slides';
 import { useDispatch, useSelector } from 'react-redux';
-import { carregarReceitas } from '../../store/reducers/receitas';
-import Modal from '../Helper/Modal/Modal';
+import { carregarReceitas, filtroMaisAcessadas } from '../../store/reducers/receitas';
 import Carregando from '../Helper/Carregando/Carregando';
 
 const Home = ({total, user}) => {
   const dispatch = useDispatch();
   const loading = useSelector((state)=> state.receitas.loading);
-  const stateAcessadas = useSelector((state)=> state.receitas);
+  const stateAcessadas = useSelector(filtroMaisAcessadas);
   const [scrollActive, setScrollActive] = React.useState(null);
 
   React.useEffect(()=> {

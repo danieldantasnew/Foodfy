@@ -5,7 +5,7 @@ import useMedia from '../../../Hooks/useMedia';
 import { useSelector } from 'react-redux';
 
 const Slides = () => {
-  const data = useSelector((state)=> state.receitas.data);
+  const {data} = useSelector((state)=> state.receitas);
   const referencia = useRef(null);
   const loopRef = useRef(null);
   const [slide, setSlide] = React.useState(0);
