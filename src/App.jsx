@@ -13,6 +13,7 @@ import Account from './Components/Account/Account';
 import { useDispatch } from 'react-redux';
 import { autoLogin } from './store/reducers/login';
 import ProtectedRouter from './Components/Account/ProtectedRouter/ProtectedRouter';
+import NotFound from './Components/Helper/NotFound/NotFound';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
             <Account/>
           </ProtectedRouter>}/>
           <Route path='/receita/:id' element={<Receita/>}/>
+          <Route path='*' element={<NotFound/>} />
         </Routes>
         <Footer/>
       </main>

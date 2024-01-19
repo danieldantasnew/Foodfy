@@ -9,7 +9,7 @@ import Head from '../../Helper/Head/Head';
 
 const MyRecipes = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state)=> state.receitas);
+  const state = useSelector((state)=> state.receitas.data);
   const {id} = useSelector((state)=> state.login.user.data);
   const {loading} = useSelector((state)=> state.receitas);
 
