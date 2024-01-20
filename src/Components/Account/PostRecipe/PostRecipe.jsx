@@ -17,7 +17,7 @@ const PostRecipe = () => {
   const categorias = ["Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"];
   const dificuldades = ["fácil", "médio", "difícil"];
   const navigate = useNavigate();
-  const token = useSelector((state)=> state.login.token.data);
+  const {token} = useSelector((state)=> state.login.token.data);
   const {carregando, dados, erro, request} = useFetch();
   const inputFile = React.useRef(null);
   const [enviado, setEnviado] = React.useState(null);
@@ -65,7 +65,6 @@ const PostRecipe = () => {
       formData.append('ingredientes', ingredientes.data);
       formData.append('modoPreparo', modoPreparo.data);
       formData.append('tempoPreparo', tempoPreparo.data);
-
       
       const {url, options} = RECIPE_POST(formData, token);
       const {response} = await request(url, options);

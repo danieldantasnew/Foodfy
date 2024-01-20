@@ -26,10 +26,10 @@ function App() {
       <main className="App">
         <Header/>
         <Routes>
-          <Route path='/' element={<Home total={24} user={0}/>}/>
+          <Route path='/' element={<Home total={100} user={0}/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/suporte' element={<Suporte/>}/>
-          <Route path='/receitas' element={<Receitas total={24} user={0}/>}/>
+          <Route path='/receitas' element={<Receitas total={18} user={0}/>}/>
           <Route path='/login/*' element={<Login/>}/>
           <Route path='/conta/*' element={
           <ProtectedRouter>

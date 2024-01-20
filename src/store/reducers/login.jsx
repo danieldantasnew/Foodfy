@@ -6,7 +6,9 @@ import getLocalStorage from "../Helper/getLocalStorage";
 const token = createAsyncSlice({
   name: 'token',
   initialState: {
-    data: getLocalStorage('token', null),
+    data: {
+      token: getLocalStorage('token', null),
+    },
   },
   fetchConfig: (user)=> TOKEN_POST(user),
   reducers: {
@@ -58,8 +60,8 @@ const fetchUser = user.fetchElement;
 const estadoInicialUser = user.actions.returnInitialState;
 
 export const autoLogin = ()=> async (dispatch, getState) => {
-  const {data} = getState().login.token;
-  if(data) dispatch(fetchUser(data));
+  const {token} = getState().login.token.data;
+  if(token) dispatch(fetchUser(token));
 }
 
 export const login = (user) => async (dispatch)=> {
