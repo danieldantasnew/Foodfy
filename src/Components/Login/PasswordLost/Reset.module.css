@@ -1,0 +1,14 @@
+.Reset {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6vh;
+  padding-left: 3rem;
+}
+
+.Reset input {
+  max-width: 25rem;
+}
+
+.Reset button {
+  max-width: 140px;
+}
