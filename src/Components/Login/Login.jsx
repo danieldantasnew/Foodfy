@@ -7,6 +7,7 @@ import useMedia from '../../Hooks/useMedia';
 import PasswordLost from './PasswordLost/PasswordLost';
 import { useSelector } from 'react-redux';
 import NotFound from '../Helper/NotFound/NotFound';
+import Reset from './PasswordLost/Reset';
 
 const Login = () => {
   const mobile = useMedia("(max-width: 56.1875rem)");
@@ -22,6 +23,7 @@ const Login = () => {
         <Route path='/' element={<PagLogin/>}/>
         <Route path='cadastro' element={<Cadastro/>}/>
         <Route path='passwordLost' element={<PasswordLost/>}/>
+        <Route path='reset' element={<Reset/>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
     </section>

@@ -52,12 +52,15 @@ const Slides = () => {
     }
 
     function startSlide(qntSlides) {
-      const largura = referencia.current.children[0].getBoundingClientRect().width;
       loopRef.current = setInterval(() => {
         slideAuto(qntSlides);
       }, 4000);
 
-      referencia.current.style.transform = `translate3d(${-(largura * slide)}px, 0, 0)`;
+      if(referencia.current.children[0]){
+        const largura = referencia.current.children[0].getBoundingClientRect().width;
+        referencia.current.style.transform = `translate3d(${-(largura * slide)}px, 0, 0)`;
+      }
+     
     }
 
     function handleResize() {

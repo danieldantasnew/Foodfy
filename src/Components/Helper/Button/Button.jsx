@@ -1,8 +1,8 @@
 import style from './Button.module.css';
 
-const Button = ({nome, estilo}) => {
+const Button = ({nome, estilo, props}) => {
   return (
-    <button style={estilo} className={style.Botao}>{nome}</button>
+    <button style={estilo} className={style.Botao} {...props}>{nome}</button>
   )
 }
 
