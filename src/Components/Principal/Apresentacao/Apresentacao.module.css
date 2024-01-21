@@ -22,23 +22,46 @@
   line-height: 2.4rem;
 }
 
-.titulos p{
+.titulos span{
   color: var(--subtitulos);
   font-size: 1.2rem;
   line-height: 1.4rem;
-}
-
-@media (max-width: 34.375rem) {
-  .titulos h1{
-    font-size: 2.3rem;
-    line-height: 2.1rem;
-  }
-  .titulos p{
-    color: var(--subtitulos);
-    font-size: 0.9rem;
-  }
+  min-height: 67.17px;
 }
 
 .imagemChef img {
   max-width: 90%;
 }
+
+
+@media (max-width: 34.375rem) {
+  .apresentacao {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .titulos {
+    max-width: 100%;
+  }
+
+  .imagemChef{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imagemChef img {
+    max-width: 70%;
+  }
+
+  /* .titulos h1{
+    font-size: 2.3rem;
+    line-height: 2.1rem;
+  }
+  .titulos span{
+    color: var(--subtitulos);
+    font-size: 1rem;
+  } */
+}
+
