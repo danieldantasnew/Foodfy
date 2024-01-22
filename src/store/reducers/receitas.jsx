@@ -43,6 +43,15 @@ export const carregarReceitas = ({total, user}) => async(dispatch, getState) => 
   }
 }
 
+export const carregarTodasReceitas = ({total, user}) => async(dispatch) => {
+  try {
+   await dispatch(fetchReceitas({total, page: 1, user}));
+  }
+  catch(erro) {
+    return {}
+  }
+}
+
 //Com o reselect posso colocar meu seletor na memória e evitar re-renderizações desnecessárias para um array que não mudou o seu valor, apenas sua referência. Com o reselect tbm é possível fazer outras coisas mas no meu caso de uso foi esse.
 export const filtroMaisAcessadas = createSelector((state)=> state.receitas.data, (data)=> {
     if(data) {

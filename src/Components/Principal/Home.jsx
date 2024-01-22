@@ -5,7 +5,7 @@ import Head from '../Helper/Head/Head';
 import Cards from '../Receitas/Cards/Cards';
 import Slides from './Slides/Slides';
 import { useDispatch, useSelector } from 'react-redux';
-import { carregarReceitas, filtroMaisAcessadas } from '../../store/reducers/receitas';
+import { carregarTodasReceitas, filtroMaisAcessadas } from '../../store/reducers/receitas';
 import Carregando from '../Helper/Carregando/Carregando';
 
 const Home = ({total, user}) => {
@@ -15,7 +15,7 @@ const Home = ({total, user}) => {
   const [scrollActive, setScrollActive] = React.useState(null);
 
   React.useEffect(()=> {
-    dispatch(carregarReceitas({total, user}))
+    dispatch(carregarTodasReceitas({total, user}))
   }, [dispatch, total, user]);
 
   React.useEffect(()=> {

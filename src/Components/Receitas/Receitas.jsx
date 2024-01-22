@@ -38,6 +38,7 @@ const Receitas = ({total, user}) => {
           <Busca/>
           <Cards state={state}/>
           {!stopRecipes && <CarregarMaisReceitas total={total} user={user}/>}
+          {stopRecipes && <p style={{textAlign: "center", color: "var(--principal)"}}>Não há mais receitas</p>}
         </div>
       </div>
     </section>
