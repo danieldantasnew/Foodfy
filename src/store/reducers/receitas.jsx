@@ -4,16 +4,39 @@ import createAsyncSlice from "../CreateAsyncSlice/CreateAsyncSlice";
 
 const receitas = createAsyncSlice({
   name: 'receitas',
+  initialState: {
+    listRecipes: [],
+    page: 1,
+    stopRecipes: false,
+  },
+  reducers: {
+    newRecipes(state, action) {
+      state.listRecipes.push(...action.payload);
+      if(action.payload.length === 0) state.stopRecipes = true;
+    },
+    addNextPage(state) {
+      state.page++;
+    }
+  },
   fetchConfig: ({total, page, user})=> RECIPES_GET({total, page, user}),
 });
 
 
 const fetchReceitas = receitas.fetchElement;
+const {newRecipes, addNextPage} = receitas.actions;
 
 
-export const carregarReceitas = ({total, page, user}) => async(dispatch) => {
+export const carregarReceitas = ({total, user}) => async(dispatch, getState) => {
   try {
-    await dispatch(fetchReceitas({total, page, user}));
+   const {payload} = await dispatch(fetchReceitas({total, page: getState().receitas.page, user}));
+    const lista = getState().receitas.listRecipes;
+    const novaLista = [];
+    payload.forEach((elemento)=> {
+      //Verifica se o novo elemento não está presente na lista, se sim ele inclui
+      if(lista.findIndex((receita)=> receita.id === elemento.id) === -1) novaLista.push(elemento);
+    });
+    dispatch(newRecipes(novaLista));
+    dispatch(addNextPage());
   }
   catch(erro) {
     return {}
