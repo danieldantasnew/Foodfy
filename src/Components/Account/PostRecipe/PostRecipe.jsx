@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import Head from '../../Helper/Head/Head';
 
 const PostRecipe = () => {
-  const categorias = ["Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"];
-  const dificuldades = ["fácil", "médio", "difícil"];
+  const categorias = useSelector((state)=> state.receitas.categorias);
+  const dificuldades = useSelector((state)=> state.receitas.dificuldades);
   const navigate = useNavigate();
   const {token} = useSelector((state)=> state.login.token.data);
   const {carregando, dados, erro, request} = useFetch();
@@ -26,7 +26,7 @@ const PostRecipe = () => {
   const nomeReceita = useValidate();
   const descricao = useValidate();
   const [categoria, setCategoria] = React.useState('Arroz');
-  const [dificuldade, setDificuldade] = React.useState('fácil');
+  const [dificuldade, setDificuldade] = React.useState('muito fácil');
   const ingredientes = useValidate();
   const modoPreparo = useValidate();
   const tempoPreparo = useValidate();

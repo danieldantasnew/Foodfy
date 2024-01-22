@@ -5,11 +5,12 @@ import {useValidate} from '../../../Hooks/useValidate';
 import Textarea from '../../Helper/TextArea/Textarea';
 import styleLabel from '../../Helper/Input/Input.module.css';
 import Select from '../../Helper/Select/Select';
+import { useSelector } from 'react-redux';
 
 const Editar = () => {
   const tempoPreparo = useValidate();
-  const categorias = ["Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"];
-  const dificuldades = ["fácil", "médio", "difícil"];
+  const categorias = useSelector((state)=> state.receitas.categorias);
+  const dificuldades = useSelector((state)=> state.receitas.dificuldades);
 
   function handleSubmit(event) {
     event.preventDefault();

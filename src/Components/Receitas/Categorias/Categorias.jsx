@@ -1,18 +1,23 @@
 import React from 'react'
 import style from './Categorias.module.css';
 import receitasStyle from '../Receitas.module.css';
+import { useSelector } from 'react-redux';
 
 const Categorias = ({mobile}) => {
   const [categorias, setCategorias] = React.useState(true);
   const [checked, setChecked] = React.useState(0);
-  const lista = ["Todas as categorias", "Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"];
+  const lista = useSelector((state)=> state.receitas.categorias);
+  const [novaLista, setNovaLista] = React.useState(lista);
 
   React.useEffect(()=> {
+    
     if(mobile) setCategorias(false);
     else setCategorias(true);
   }, [mobile]);
 
-
+  React.useEffect(()=> {
+    setNovaLista((novaLista)=> ["Todas as Categorias", ...novaLista]);
+  }, []);
 
   function handleCategoria() {
     setCategorias(!categorias);
@@ -28,7 +33,7 @@ const Categorias = ({mobile}) => {
       </div>
       {categorias && 
         <ul>
-          {lista.map((elemento, index)=>
+          {novaLista.map((elemento, index)=>
             <li key={elemento} className={index === checked ? style.ativo : ''} onClick={()=> setChecked(index)}>{elemento}</li> 
           )}
       </ul>}
