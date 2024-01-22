@@ -9,12 +9,14 @@ import Carregando from '../Helper/Carregando/Carregando';
 import useMedia from '../../Hooks/useMedia';
 import { useDispatch, useSelector } from 'react-redux';
 import { carregarReceitas } from '../../store/reducers/receitas';
+import CarregarMaisReceitas from './CarregarMaisReceitas/CarregarMaisReceitas';
 
 const Receitas = ({total, user}) => {
   const dispatch = useDispatch();
   const mobile = useMedia("(max-width: 34.375rem)");
   const loading = useSelector((state)=> state.receitas.loading);
-  const state = useSelector((state)=> state.receitas.data);
+  const state = useSelector((state)=> state.receitas.listRecipes);
+  const {stopRecipes} = useSelector((state)=> state.receitas);
 
   React.useEffect(()=> {
     dispatch(carregarReceitas({total, user}))
@@ -35,6 +37,7 @@ const Receitas = ({total, user}) => {
         <div className={style.grid}>
           <Busca/>
           <Cards state={state}/>
+          {!stopRecipes && <CarregarMaisReceitas total={total} user={user}/>}
         </div>
       </div>
     </section>
