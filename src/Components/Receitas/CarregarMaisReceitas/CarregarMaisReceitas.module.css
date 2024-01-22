@@ -1,0 +1,22 @@
+.CarregarMaisReceitas {
+  align-self: center;
+  width: 42px;
+  height: 42px;
+  background-color: var(--de-fundo);
+  border: 1px solid #c4c4c4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CarregarMaisReceitas:hover {
+  cursor: pointer;
+  border: 1px solid var(--principal);
+  transition: .3s;
+}
+
+.CarregarMaisReceitas:hover svg path{
+  stroke: var(--principal);
+  transition: .3s;
+}
