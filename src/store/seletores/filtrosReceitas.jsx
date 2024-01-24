@@ -7,20 +7,19 @@ const categoria = (categoriaSelecionada) => (elemento)=> {
   }
 }
 
-const filtro = (filtroSelecionado) => (elemento) => {
+const filtro = (filtroSelecionado) => (elementoAtual, elementoProximo) => {
+  let dataElementoAtual, dataElementoProximo;
   switch (filtroSelecionado) {
     case "Mais antigas":
-      console.log('algo')
-      break;
+      dataElementoAtual = new Date(elementoAtual.date);
+      dataElementoProximo = new Date(elementoProximo.date);
+      return dataElementoAtual - dataElementoProximo;
     case "Mais acessadas":
-      console.log('algo')
-      break;
+      return elementoProximo.acessos - elementoAtual.acessos;
     case "Melhor avaliadas":
-      console.log('algo')
-      break;
+      return elementoProximo.pesoAvaliacaoComentarios - elementoAtual.pesoAvaliacaoComentarios;
     case "De A-Z":
-      console.log('algo')
-      break;
+      return elementoAtual.nome.localeCompare(elementoProximo.nome)
     default:
       return true;
   }
@@ -28,5 +27,5 @@ const filtro = (filtroSelecionado) => (elemento) => {
 
 export const filtroCategoria = createSelector((state) => state.receitas, (data)=> {
   return data.listRecipes.filter(categoria(data.filtros.categoriaSelecionada))
-  .filter(filtro(data.filtros.filtro));
+  .sort(filtro(data.filtros.filtro));
 });
