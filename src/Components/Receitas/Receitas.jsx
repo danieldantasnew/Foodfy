@@ -10,12 +10,14 @@ import useMedia from '../../Hooks/useMedia';
 import { useDispatch, useSelector } from 'react-redux';
 import { carregarReceitas } from '../../store/reducers/receitas';
 import CarregarMaisReceitas from './CarregarMaisReceitas/CarregarMaisReceitas';
+import { filtroCategoria } from '../../store/seletores/filtrosReceitas';
+
 
 const Receitas = ({total, user}) => {
   const dispatch = useDispatch();
   const mobile = useMedia("(max-width: 34.375rem)");
   const loading = useSelector((state)=> state.receitas.loading);
-  const state = useSelector((state)=> state.receitas.listRecipes);
+  const state = useSelector(filtroCategoria);
   const {stopRecipes} = useSelector((state)=> state.receitas);
 
   React.useEffect(()=> {

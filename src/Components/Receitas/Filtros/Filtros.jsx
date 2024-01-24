@@ -18,24 +18,7 @@ const Filtros = ({mobile}) => {
         <img src="../../../public/Images/icons/Receitas/Filtro.svg" alt="" />
         <h2>Filtrar por:</h2>
       </div>
-      {filtros && 
-        <ul>
-          <li>
-            <Radio descricao="Mais recentes" name="filtro"/>
-          </li>
-          <li>
-            <Radio descricao="Mais antigas" name="filtro"/>
-          </li>
-          <li>
-            <Radio descricao="Mais acessadas" name="filtro"/>
-          </li>
-          <li>
-            <Radio descricao="Melhor avaliadas" name="filtro"/>
-          </li>
-          <li>
-            <Radio descricao="De A-Z" name="filtro"/>
-          </li>
-        </ul>}
+      {filtros && <Radio/>}
   </div>  
   )
 }

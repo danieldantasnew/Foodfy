@@ -9,15 +9,25 @@ const receitas = createAsyncSlice({
     page: 1,
     stopRecipes: false,
     categorias: ["Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"],
-    dificuldades: ["muito fácil", "fácil", "médio", "difícil", "avançado"]
+    dificuldades: ["muito fácil", "fácil", "médio", "difícil", "avançado"],
+    filtros: {
+      filtro: "",
+      categoriaSelecionada: "Todas as Categorias",
+    }
   },
   reducers: {
     newRecipes(state, action) {
       state.listRecipes.push(...action.payload);
-      if(action.payload.length === 0) state.stopRecipes = true;
     },
     addNextPage(state) {
       state.page++;
+    },
+    stopRecipes(state) {
+      state.stopRecipes = true;
+    },
+    setFiltros(state, action) {
+      //como estou retornando um objeto com name e value dentro do payload então consigo acessar categoriaSelecionada ou filtro, dependendo do action.payload.name que eu passar.
+      state.filtros[action.payload.name] = action.payload.value;
     }
   },
   fetchConfig: ({total, page, user})=> RECIPES_GET({total, page, user}),
@@ -25,7 +35,7 @@ const receitas = createAsyncSlice({
 
 
 const fetchReceitas = receitas.fetchElement;
-const {newRecipes, addNextPage} = receitas.actions;
+export const {newRecipes, addNextPage, setFiltros, stopRecipes} = receitas.actions;
 
 
 export const carregarReceitas = ({total, user}) => async(dispatch, getState) => {
@@ -37,8 +47,10 @@ export const carregarReceitas = ({total, user}) => async(dispatch, getState) => 
       //Verifica se o novo elemento não está presente na lista, se sim ele inclui
       if(lista.findIndex((receita)=> receita.id === elemento.id) === -1) novaLista.push(elemento);
     });
-    dispatch(newRecipes(novaLista));
-    dispatch(addNextPage());
+    
+    (novaLista.length > 0) ? 
+    dispatch(newRecipes(novaLista)) && dispatch(addNextPage()): 
+    dispatch(stopRecipes());
   }
   catch(erro) {
     return {}

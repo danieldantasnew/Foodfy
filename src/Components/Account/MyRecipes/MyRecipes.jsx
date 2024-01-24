@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Myrecipes.module.css';
 import Cards from '../../Receitas/Cards/Cards';
 import { useDispatch, useSelector } from 'react-redux';
-import {carregarReceitas} from '../../../store/reducers/receitas';
+import {carregarTodasReceitas} from '../../../store/reducers/receitas';
 import Carregando from '../../Helper/Carregando/Carregando';
 import Title from '../Helper/Titles/Title';
 import Head from '../../Helper/Head/Head';
@@ -14,7 +14,7 @@ const MyRecipes = () => {
   const {loading} = useSelector((state)=> state.receitas);
 
   React.useEffect(()=> {
-    dispatch(carregarReceitas({total: 24, user: id}));
+    dispatch(carregarTodasReceitas({total: 100, user: id}))
   }, [dispatch, id]);
 
   if(loading) return <Carregando/>
