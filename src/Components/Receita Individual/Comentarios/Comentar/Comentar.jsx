@@ -1,15 +1,31 @@
 import React from 'react';
 import style from './Comentar.module.css';
 import styleInput from '../../../Helper/Input/Input.module.css';
+import useFetch from '../../../../Hooks/useFetch';
+import { useParams } from 'react-router-dom';
+import { COMMENT_POST } from '../../../../Api';
+import { useSelector } from 'react-redux';
+import Error from '../../../Helper/Error/Error';
 
-const Comentar = () => {
+const Comentar = ({setListaComentarios}) => {
   const [estrelaAtiva, setEstrelaAtiva] = React.useState(0);
+  const {erro, request} = useFetch();
+  const {id} = useParams();
   const [value, setValue] = React.useState(null);
+  const token = useSelector((state)=> state.login.token.data?.token);
+  const [comentario, setComentario] = React.useState('');
 
-  function handleComment(event) {
+
+
+  async function handleComment(event) {
     event.preventDefault();
-    //Antes de enviar o comentário, verificar se foi enviada a avaliação (se value é igual a null), se sim então não será possível enviar pois a avaliação será obrigatória.
-    console.log('Enviar')
+    const {url, options} = COMMENT_POST({
+      comment: comentario,
+      avaliacao: value,
+    }, id, token);
+
+    const {response, json} = await request(url, options);
+    if(response.ok) setListaComentarios((listaComentarios)=> [json, ...listaComentarios]);
   }
 
   function handleAvaliacao(index) {
@@ -29,10 +45,15 @@ const Comentar = () => {
         {value === 1 ? <div>Péssima</div> : value === 2 ? <div>Regular</div> : value === 3 ? <div>Boa</div> : value === 4 ? <div>Ótima</div> : value === 5 ?<div>Excelente</div> : ''}
       </div>
       <div className={style.formComentar}>
-        <textarea className={`${styleInput.Input} ${style.Textarea}`} placeholder='Comentar...'/>
+        <textarea 
+          className={`${styleInput.Input} ${style.Textarea}`} placeholder='Comentar...'
+          value={comentario}
+          onChange={({target})=> setComentario(target.value)}
+        />
         <button className={style.btnEnviar}>
           <img src="../../../../../public/Images/icons/Receita Individual/Enviar.svg" alt="Enviar" />
         </button>
+        {erro && <Error mensagem={erro} />}
       </div>
     </form>
   )

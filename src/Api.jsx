@@ -86,3 +86,17 @@ export function PASSWORD_RESET(body) {
     }
   }
 }
+
+export function COMMENT_POST(body, id, token) {
+  return {
+    url: url_API + `/api/comment/${id}`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:' Bearer '+ token
+      },
+      body: JSON.stringify(body)
+    }
+  }
+}

@@ -8,7 +8,7 @@ const receitas = createAsyncSlice({
     listRecipes: [],
     page: 1,
     stopRecipes: false,
-    categorias: ["Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"],
+    categorias: ["Acompanhamentos","Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Iguaria", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"],
     dificuldades: ["muito fácil", "fácil", "médio", "difícil", "avançado"],
     filtros: {
       filtro: "",

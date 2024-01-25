@@ -25,7 +25,7 @@ const PostRecipe = () => {
   const [imagem, setImagem] = React.useState({});
   const nomeReceita = useValidate();
   const descricao = useValidate();
-  const [categoria, setCategoria] = React.useState('Arroz');
+  const [categoria, setCategoria] = React.useState('');
   const [dificuldade, setDificuldade] = React.useState('muito fácil');
   const ingredientes = useValidate();
   const modoPreparo = useValidate();

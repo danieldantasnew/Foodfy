@@ -2,14 +2,13 @@ import React from 'react';
 import style from './Comentarios.module.css';
 import Avaliacoes from './Avaliacoes/Avaliacoes';
 import Comentar from './Comentar/Comentar';
+import { useSelector } from 'react-redux';
 
 const Comentarios = ({comentarios}) => {
-
-  comentarios.sort((anterior, proximo)=> {
-    let Anterior = new Date(anterior.comment_date).getTime();
-    let Proxima = new Date(proximo.comment_date).getTime();
-    return Proxima - Anterior;
-  });
+  const username = useSelector((state)=> state.login.user.data?.username);
+  const {data} = useSelector((state)=> state.login.user);
+  const [listaComentarios, setListaComentarios] = React.useState([]);
+  const [podeComentar, setPodeComentar] = React.useState(true);
 
   function organizaData(data) {
     const partesDaData = data.split(/[- :]/);
@@ -24,17 +23,36 @@ const Comentarios = ({comentarios}) => {
 
     return dataFormatada;
   }
+  React.useEffect(()=> {
+    setListaComentarios((listaComentarios)=> [...comentarios, ...listaComentarios]);
+  }, [comentarios]);
+
+  React.useEffect(()=> {
+    function loopList() {
+      data ?
+      listaComentarios.forEach((elemento)=> {
+        if(elemento.comment_author === username) {
+          setPodeComentar(false);
+        }
+      })
+      : setPodeComentar(false);
+    }
+
+    if(listaComentarios) {
+      loopList()
+    }
+  }, [listaComentarios, username, data]);
 
   if(comentarios === null) return null;
 
   return (
     <div className={`${style.Comentarios} animaTop`}>
-      <div className={comentarios.length > 0 ? style.titulo : style.tituloSemComentarios}>
-        <h2>Comentários <strong>{`(${comentarios.length})`}</strong></h2>
+      <div className={listaComentarios.length > 0 ? style.titulo : style.tituloSemComentarios}>
+        <h2>Comentários <strong>{`(${listaComentarios.length})`}</strong></h2>
       </div>
       <div className={style.contentComentarios}>
-        {comentarios.length > 0 ? 
-        comentarios.map((comentario)=>
+        {listaComentarios.length > 0 ? 
+        listaComentarios.map((comentario)=>
           <div key={comentario.comment_ID} className={style.comentario}>
             <img src="../../../../public/Images/pngs/User.svg" alt="" />
             <div className={style.comentarioInfo}>
@@ -52,9 +70,18 @@ const Comentarios = ({comentarios}) => {
           <p className={style.semComentarios}>Ainda não há comentários...</p>
         }
       </div>
-      <Comentar />   
+      {podeComentar && <Comentar setListaComentarios={setListaComentarios} />}
+      {!data && !podeComentar && 
+        <p style={{marginTop: "1rem"}}>
+          Faça 
+          <a href='/login' style={{margin: "4px", color: "var(--links-externos)"}}>
+            login
+          </a>
+          para avaliar esta receita!
+        </p>
+      }
     </div>
   )
 }
 
-export default Comentarios
+export default Comentarios;

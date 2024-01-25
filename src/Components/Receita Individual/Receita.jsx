@@ -34,6 +34,7 @@ const Receita = () => {
             media={data.recipe.mediaAvaliacao}
             totalComentarios={data.comments.length}
             setModal={setModal}
+            author = {data.recipe.author}
             />
             <InfoReceita 
             datePost={data.recipe.date} 
