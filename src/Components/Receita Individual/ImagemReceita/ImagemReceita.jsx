@@ -4,7 +4,7 @@ import Avaliacoes from '../Comentarios/Avaliacoes/Avaliacoes';
 import MenuOpcs from './MenuOpcs/MenuOpcs';
 import { useSelector } from 'react-redux';
 
-const ImagemReceita = ({src, nome, media, totalComentarios, setModal, author}) => {
+const ImagemReceita = ({src, nome, media, totalComentarios, setModal, author, id}) => {
   const [menu, setMenu] = React.useState(false);
   const logado = useSelector((state)=> state.login.user.data);
   const [donoReceita, setDonoReceita] = React.useState(false);
@@ -29,7 +29,7 @@ const ImagemReceita = ({src, nome, media, totalComentarios, setModal, author}) =
           <span></span>
           <span></span>
         </button>
-        {menu && <MenuOpcs setModal={setModal} setMenu={setMenu}/>}
+        {menu && <MenuOpcs setModal={setModal} setMenu={setMenu} id={id}/>}
       </div>
       }
       <h2 className={style.titulo}>{nome}</h2>

@@ -30,7 +30,7 @@ const InfoReceita = ({firstName, lastName, dificuldade, tempoPreparo, datePost})
       <div className={style.infoComplementar}>
         <p>
           <img src="../../../public/Images/icons/Receita Individual/Dificuldade.svg" alt="Dificuldade da receita" />
-          {"Nível " + dificuldade}
+          {"Nível: " + dificuldade}
         </p>
         <p>
           <img src="../../../public/Images/icons/Receita Individual/Calendario.svg" alt="Data de publicação" />

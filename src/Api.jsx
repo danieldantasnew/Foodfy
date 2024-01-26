@@ -75,6 +75,18 @@ export function RECIPE_PUT(body, token, id) {
   }
 }
 
+export function RECIPE_DELETE(id, token) {
+  return {
+    url: url_API + `/api/recipe/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        Authorization:'Bearer '+ token
+      }
+    }
+  }
+}
+
 export function PASSWORD_LOST(body) {
   return {
     url: url_API + '/api/password/lost',

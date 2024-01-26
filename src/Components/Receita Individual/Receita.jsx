@@ -55,6 +55,7 @@ const Receita = () => {
             totalComentarios={data.comments.length}
             setModal={setModal}
             author = {data.recipe.author}
+            id={data.recipe.id}
             />
             <InfoReceita 
             datePost={data.recipe.date} 
