@@ -1,8 +1,12 @@
 import style from './Textarea.module.css';
 import labelInput from '../Input/Input.module.css';
-import Error from '../Error/Error';
 
-const Textarea = ({placeholder, name, handleChange, onBlur, erro}) => {
+const Textarea = ({placeholder, name, value, setValue}) => {
+
+  function handleChange({target}) {
+    setValue(target.value)
+  }
+
   return (
   <label htmlFor={name} className={labelInput.Label}>
       {name}
@@ -10,10 +14,9 @@ const Textarea = ({placeholder, name, handleChange, onBlur, erro}) => {
         className={`${style.Textarea}`} 
         placeholder={placeholder || ''} 
         id={name}
-        onChange={handleChange} 
-        onBlur={onBlur}
+        value={value}
+        onChange={handleChange}
         />
-        {erro && <Error mensagem={erro} />}
   </label>
   )
 }

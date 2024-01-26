@@ -61,6 +61,20 @@ export function RECIPE_POST(formData, token) {
   }
 }
 
+export function RECIPE_PUT(body, token, id) {
+  return {
+    url: url_API + `/api/recipe/${id}`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:'Bearer '+ token
+      },
+      body: JSON.stringify(body),
+    }
+  }
+}
+
 export function PASSWORD_LOST(body) {
   return {
     url: url_API + '/api/password/lost',

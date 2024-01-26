@@ -30,17 +30,14 @@ const Comentarios = ({comentarios}) => {
   React.useEffect(()=> {
     function loopList() {
       data ?
-      listaComentarios.forEach((elemento)=> {
-        if(elemento.comment_author === username) {
-          setPodeComentar(false);
-        }
-      })
-      : setPodeComentar(false);
+        listaComentarios.some((elemento)=> elemento.comment_author === username) ?
+        setPodeComentar(false) :
+        setPodeComentar(true)
+      :
+      setPodeComentar(false);
     }
 
-    if(listaComentarios) {
-      loopList()
-    }
+    loopList();
   }, [listaComentarios, username, data]);
 
   if(comentarios === null) return null;

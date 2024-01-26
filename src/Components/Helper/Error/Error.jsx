@@ -1,8 +1,8 @@
 import style from './Error.module.css';
 
-const Error = ({mensagem}) => {
+const Error = ({mensagem, estilo}) => {
   return (
-    <p className={style.Error}>{mensagem || "O erro não foi repassado."}</p>
+    <p className={`${style.Error} ${estilo || ''}`}>{mensagem || "O erro não foi repassado."}</p>
   )
 }
 

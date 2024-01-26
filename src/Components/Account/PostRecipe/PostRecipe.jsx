@@ -24,11 +24,11 @@ const PostRecipe = () => {
 
   const [imagem, setImagem] = React.useState({});
   const nomeReceita = useValidate();
-  const descricao = useValidate();
+  const [descricao, setDescricao] = React.useState('');
   const [categoria, setCategoria] = React.useState('');
   const [dificuldade, setDificuldade] = React.useState('muito fácil');
-  const ingredientes = useValidate();
-  const modoPreparo = useValidate();
+  const [ingredientes, setIngredientes] = React.useState('');
+  const [modoPreparo, setModoPreparo] = React.useState('');
   const tempoPreparo = useValidate();
 
   React.useEffect(()=> {
@@ -55,15 +55,15 @@ const PostRecipe = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if(nomeReceita.validate() && descricao.validate() && ingredientes.validate() && modoPreparo.validate() && tempoPreparo.validate()) {
+    if(nomeReceita.validate() && descricao && ingredientes && modoPreparo && tempoPreparo.validate()) {
       const formData = new FormData();
       formData.append('img', imagem.raw);
       formData.append('nome', nomeReceita.data);
-      formData.append('descricao', descricao.data);
+      formData.append('descricao', descricao);
       formData.append('categoria', categoria);
       formData.append('dificuldade', dificuldade);
-      formData.append('ingredientes', ingredientes.data);
-      formData.append('modoPreparo', modoPreparo.data);
+      formData.append('ingredientes', ingredientes);
+      formData.append('modoPreparo', modoPreparo);
       formData.append('tempoPreparo', tempoPreparo.data);
       
       const {url, options} = RECIPE_POST(formData, token);
@@ -96,7 +96,8 @@ const PostRecipe = () => {
         <TextArea 
         placeholder="Descreva sobre sua receita" 
         name="Descrição"
-        {...descricao}
+        value={descricao}
+        setValue={setDescricao}
         />
         <div className={style.cdi}>
           <div className={style.selects}>
@@ -116,13 +117,15 @@ const PostRecipe = () => {
           <TextArea 
             name="Ingredientes" 
             placeholder='Separe os ingredientes por ponto (".")' 
-            {...ingredientes} 
+            value={ingredientes}
+            setValue={setIngredientes}
           />
         </div>
         <TextArea 
           name="Modo de Preparo" 
           placeholder='Separe as etapas por ponto (".")'
-          {...modoPreparo}
+          value={modoPreparo}
+          setValue={setModoPreparo}
         />
         <Input label="Tempo de Preparo (Minutos)" tipo="number" {...tempoPreparo}/>
         {enviado ? <Button nome="Postado!" /> :

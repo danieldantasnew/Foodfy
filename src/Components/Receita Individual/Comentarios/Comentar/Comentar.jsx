@@ -53,8 +53,8 @@ const Comentar = ({setListaComentarios}) => {
         <button className={style.btnEnviar}>
           <img src="../../../../../public/Images/icons/Receita Individual/Enviar.svg" alt="Enviar" />
         </button>
-        {erro && <Error mensagem={erro} />}
       </div>
+      {erro && <Error mensagem={erro} />}
     </form>
   )
 }

@@ -35,3 +35,9 @@
     padding: 0 1rem;
   }
 }
+
+.receitaErro {
+  min-height: 80vh;
+  font-size: 2rem;
+  text-align: center;
+}
