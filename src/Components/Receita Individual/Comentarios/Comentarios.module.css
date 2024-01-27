@@ -64,6 +64,27 @@
   width: 18px;
 }
 
+.editarComentario {
+  margin-left: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  border: none;
+  outline: none;
+}
+
+.comentarioInfo:hover .editarComentario {
+  opacity: 1;
+}
+
+.editarComentario span {
+  display: block;
+  background: url('../../../../public/Images/icons/De uso Geral/btn3points.svg') no-repeat center;
+  background-size: contain;
+  height: 24px;
+  width: 24px;
+  background-color: var(--de-fundo);
+}
+
 .dataComentario {
   font-size: 0.9rem !important;
   color: var(--opcs-header);

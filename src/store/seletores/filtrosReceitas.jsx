@@ -1,5 +1,18 @@
 import { createSelector } from 'reselect';
 
+//Com o reselect posso colocar meu seletor na memória e evitar re-renderizações desnecessárias para um array que não mudou o seu valor, apenas sua referência. Com o reselect tbm é possível fazer outras coisas mas no meu caso de uso foi esse.
+export const filtroMaisAcessadas = createSelector((state)=> state.receitas.data, (data)=> {
+  if(data) {
+    const copiaStateArray = [...data];
+    copiaStateArray.sort((anterior, proximo)=> {
+      return proximo.acessos - anterior.acessos;
+    });
+    copiaStateArray.splice(9);
+
+    return copiaStateArray;
+  }
+});
+
 const categoria = (categoriaSelecionada) => (elemento)=> {
   if(categoriaSelecionada === "Todas as Categorias") return true;
   else {
@@ -29,3 +42,4 @@ export const filtroCategoria = createSelector((state) => state.receitas, (data)=
   return data.listRecipes.filter(categoria(data.filtros.categoriaSelecionada))
   .sort(filtro(data.filtros.filtro));
 });
+

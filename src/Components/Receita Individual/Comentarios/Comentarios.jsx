@@ -4,7 +4,7 @@ import Avaliacoes from './Avaliacoes/Avaliacoes';
 import Comentar from './Comentar/Comentar';
 import { useSelector } from 'react-redux';
 
-const Comentarios = ({comentarios}) => {
+const Comentarios = ({comentarios, setModalComentario}) => {
   const username = useSelector((state)=> state.login.user.data?.username);
   const {data} = useSelector((state)=> state.login.user);
   const [listaComentarios, setListaComentarios] = React.useState([]);
@@ -23,8 +23,17 @@ const Comentarios = ({comentarios}) => {
 
     return dataFormatada;
   }
+
   React.useEffect(()=> {
-    setListaComentarios((listaComentarios)=> [...comentarios, ...listaComentarios]);
+    const novaLista = [];
+    if(comentarios) {
+      comentarios.forEach((elemento)=> {
+        if(listaComentarios.findIndex((comentario) => comentario.comment_ID === elemento.comment_ID) === -1) {
+          novaLista.push(elemento)
+        }
+      });
+      setListaComentarios((listaComentarios)=> [...novaLista, ...listaComentarios]);
+    }
   }, [comentarios]);
 
   React.useEffect(()=> {
@@ -57,6 +66,9 @@ const Comentarios = ({comentarios}) => {
                 <div className={style.nomeAvaliacao}>
                   <h3>{comentario.display_name}</h3>
                   <Avaliacoes avaliacao={comentario.comment_karma} />
+                  {username === comentario.comment_author ? <button className={style.editarComentario} onClick={()=> setModalComentario((modalComentario) => !modalComentario)}>
+                    <span></span>
+                  </button> : ''}
                 </div>
                 <p className={style.dataComentario}>postado em {organizaData(comentario.comment_date)}</p>
               </div>

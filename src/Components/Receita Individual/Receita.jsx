@@ -10,11 +10,13 @@ import Modal from '../Helper/Modal/Modal'
 import Editar from './EditarConteudo/Editar';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error/Error';
+import EditarComentario from './Comentarios/Comentar/EditarComentario/EditarComentario';
 
 const Receita = () => {
   const params = useParams();
   const [data, setData] = React.useState(null);
   const [modal, setModal] = React.useState(false);
+  const [modalComentario, setModalComentario] = React.useState(null);
   const {carregando, erro, request} = useFetch();
   const navigate = useNavigate();
 
@@ -44,6 +46,11 @@ const Receita = () => {
       <Modal setFechar={setModal}/>
       <Editar data={data}/>
     </>}
+    {modalComentario && 
+    <>
+      <Modal setFechar={setModalComentario}/>
+      <EditarComentario/>
+    </>}
     <section className={`${style.Receita} animaBottom`}>
       <div className={`${style.content} spaceContent`}>
         {data && 
@@ -67,7 +74,7 @@ const Receita = () => {
 
             <div className={style.contentInfo}>
               <Dim descricao={data.recipe.descricao} ingredientes={data.recipe.ingredientes} modoPreparo={data.recipe.modoPreparo} />
-              <Comentarios comentarios={data.comments}/>
+              <Comentarios comentarios={data.comments} setModalComentario={setModalComentario}/>
             </div>
           </>
         }

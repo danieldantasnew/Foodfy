@@ -126,3 +126,33 @@ export function COMMENT_POST(body, id, token) {
     }
   }
 }
+
+export function COMMENT_PUT(body, id, token) {
+  //o id como parâmetro é o id da receita, no corpo se passa id do comentários, comentário e avaliação.
+  return {
+    url: url_API + `/api/comment/${id}`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:' Bearer '+ token
+      },
+      body: JSON.stringify(body)
+    }
+  }
+}
+
+export function COMMENT_DELETE(body, id, token) {
+  //o id como parâmetro é o id da receita, no corpo se passa id do comentários, comentário e avaliação.
+  return {
+    url: url_API + `/api/comment/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:' Bearer '+ token
+      },
+      body: JSON.stringify(body)
+    }
+  }
+}

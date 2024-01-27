@@ -5,7 +5,8 @@ import Head from '../Helper/Head/Head';
 import Cards from '../Receitas/Cards/Cards';
 import Slides from './Slides/Slides';
 import { useDispatch, useSelector } from 'react-redux';
-import { carregarTodasReceitas, filtroMaisAcessadas } from '../../store/reducers/receitas';
+import { filtroMaisAcessadas } from '../../store/seletores/filtrosReceitas';
+import { carregarTodasReceitas } from '../../store/reducers/receitas';
 import Carregando from '../Helper/Carregando/Carregando';
 
 const Home = ({total, user}) => {

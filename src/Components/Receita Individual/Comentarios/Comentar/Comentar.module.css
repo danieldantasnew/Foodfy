@@ -4,15 +4,21 @@
 
 .formAvaliacao {
   margin-bottom: 1rem;
-  height: 5rem;
+  min-height: 5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
+  color: var(--subtitulos);
+}
+
+.formAvaliacao h3 {
+  font-weight: 500;
 }
 
 .formAvaliacao ul {
   gap: .3rem;
+  flex-wrap: wrap;
 }
 
 .estrelasCheias {

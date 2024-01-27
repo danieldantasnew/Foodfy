@@ -1,0 +1,36 @@
+.Comentar {
+  position: fixed;
+  z-index: 2005;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 660px;
+  padding: 1rem;
+}
+
+.conteudo {
+  background-color: var(--de-fundo);
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.formComentar {
+  position: relative;
+}
+
+.formComentar textarea {
+  width: 100%;
+  margin: 0;
+}
+
+.formComentar button {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+}
