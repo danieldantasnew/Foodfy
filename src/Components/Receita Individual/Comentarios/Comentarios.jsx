@@ -4,10 +4,9 @@ import Avaliacoes from './Avaliacoes/Avaliacoes';
 import Comentar from './Comentar/Comentar';
 import { useSelector } from 'react-redux';
 
-const Comentarios = ({comentarios, setModalComentario}) => {
+const Comentarios = ({comentarios, setModalComentario, listaComentarios, setListaComentarios}) => {
   const username = useSelector((state)=> state.login.user.data?.username);
   const {data} = useSelector((state)=> state.login.user);
-  const [listaComentarios, setListaComentarios] = React.useState([]);
   const [podeComentar, setPodeComentar] = React.useState(true);
 
   function organizaData(data) {
@@ -34,7 +33,7 @@ const Comentarios = ({comentarios, setModalComentario}) => {
       });
       setListaComentarios((listaComentarios)=> [...novaLista, ...listaComentarios]);
     }
-  }, [comentarios]);
+  }, [comentarios, setListaComentarios]);
 
   React.useEffect(()=> {
     function loopList() {

@@ -65,15 +65,10 @@
 }
 
 .editarComentario {
-  margin-left: 2rem;
+  margin-left: 1rem;
   cursor: pointer;
-  opacity: 0;
   border: none;
   outline: none;
-}
-
-.comentarioInfo:hover .editarComentario {
-  opacity: 1;
 }
 
 .editarComentario span {

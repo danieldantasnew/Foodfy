@@ -17,6 +17,7 @@ const Receita = () => {
   const [data, setData] = React.useState(null);
   const [modal, setModal] = React.useState(false);
   const [modalComentario, setModalComentario] = React.useState(null);
+  const [listaComentarios, setListaComentarios] = React.useState([]);
   const {carregando, erro, request} = useFetch();
   const navigate = useNavigate();
 
@@ -49,7 +50,7 @@ const Receita = () => {
     {modalComentario && 
     <>
       <Modal setFechar={setModalComentario}/>
-      <EditarComentario/>
+      <EditarComentario listaComentarios={listaComentarios} setListaComentarios={setListaComentarios} setModalComentario={setModalComentario} />
     </>}
     <section className={`${style.Receita} animaBottom`}>
       <div className={`${style.content} spaceContent`}>
@@ -74,7 +75,7 @@ const Receita = () => {
 
             <div className={style.contentInfo}>
               <Dim descricao={data.recipe.descricao} ingredientes={data.recipe.ingredientes} modoPreparo={data.recipe.modoPreparo} />
-              <Comentarios comentarios={data.comments} setModalComentario={setModalComentario}/>
+              <Comentarios comentarios={data.comments} setModalComentario={setModalComentario} listaComentarios={listaComentarios} setListaComentarios={setListaComentarios}/>
             </div>
           </>
         }

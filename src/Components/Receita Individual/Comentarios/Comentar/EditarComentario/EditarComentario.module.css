@@ -20,6 +20,19 @@
   gap: 1rem;
 }
 
+.titulo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titulo img {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
 .formComentar {
   position: relative;
 }
