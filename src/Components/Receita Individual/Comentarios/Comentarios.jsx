@@ -4,7 +4,7 @@ import Avaliacoes from './Avaliacoes/Avaliacoes';
 import Comentar from './Comentar/Comentar';
 import { useSelector } from 'react-redux';
 
-const Comentarios = ({comentarios, setModalComentario, listaComentarios, setListaComentarios}) => {
+const Comentarios = ({comentarios, setModalComentario, listaComentarios, setListaComentarios, authorReceita}) => {
   const username = useSelector((state)=> state.login.user.data?.username);
   const {data} = useSelector((state)=> state.login.user);
   const [podeComentar, setPodeComentar] = React.useState(true);
@@ -40,13 +40,13 @@ const Comentarios = ({comentarios, setModalComentario, listaComentarios, setList
       data ?
         listaComentarios.some((elemento)=> elemento.comment_author === username) ?
         setPodeComentar(false) :
-        setPodeComentar(true)
+        authorReceita === username ? setPodeComentar(false) : setPodeComentar(true)
       :
       setPodeComentar(false);
     }
 
     loopList();
-  }, [listaComentarios, username, data]);
+  }, [listaComentarios, authorReceita, username, data]);
 
   if(comentarios === null) return null;
 
@@ -59,7 +59,7 @@ const Comentarios = ({comentarios, setModalComentario, listaComentarios, setList
         {listaComentarios.length > 0 ? 
         listaComentarios.map((comentario)=>
           <div key={comentario.comment_ID} className={style.comentario}>
-            <img src="../../../../public/Images/pngs/User.svg" alt="" />
+            <img src="../../../../public/Images/pngs/User.svg" alt="Imagem perfil usuário" />
             <div className={style.comentarioInfo}>
               <div>
                 <div className={style.nomeAvaliacao}>

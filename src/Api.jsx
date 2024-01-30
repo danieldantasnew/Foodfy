@@ -19,6 +19,7 @@ export function USER_GET(token) {
     options: {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: 'Bearer '+ token,
       }
     }

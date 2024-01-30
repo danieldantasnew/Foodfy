@@ -2,7 +2,7 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import style from './UsuarioLogado.module.css';
 import React from 'react';
 import { logOut } from '../../../store/reducers/login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {ReactComponent as Recipes} from '../../../../public/Images/icons/De uso Geral/Receitas.svg';
 import {ReactComponent as Stats} from '../../../../public/Images/icons/De uso Geral/Estatísticas.svg';
 import {ReactComponent as PostRecipe} from '../../../../public/Images/icons/De uso Geral/adicionar nova receita.svg';
@@ -11,6 +11,7 @@ import {ReactComponent as LogOut} from '../../../../public/Images/icons/De uso G
 const UsuarioLogado = ({displayName}) => {
   const location = useLocation();
   const [menu, setMenu] = React.useState(false);
+  const perfil = useSelector((state)=> state.login.user.data.foto_perfil);
   const dispatch = useDispatch();
 
   function handleLogOut() {
@@ -25,7 +26,7 @@ const UsuarioLogado = ({displayName}) => {
     <>
     <div className={style.UsuarioLogado} onClick={()=> setMenu(!menu)}>
       {displayName}
-      <img src="../../../../public/Images/pngs/UserLog.svg" alt="Foto perfil do usuário" />
+      <img src={`${perfil ? perfil :"../../../../public/Images/pngs/UserLog.svg"}`} alt="Foto perfil do usuário" />
       <div className={!menu ? style.dropDown : style.dropDownActive}>
         <img src="../../../../public/Images/icons/De uso Geral/ArrowDropdown.svg" alt="" />
       </div>

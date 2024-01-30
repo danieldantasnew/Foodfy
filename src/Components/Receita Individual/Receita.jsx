@@ -75,7 +75,7 @@ const Receita = () => {
 
             <div className={style.contentInfo}>
               <Dim descricao={data.recipe.descricao} ingredientes={data.recipe.ingredientes} modoPreparo={data.recipe.modoPreparo} />
-              <Comentarios comentarios={data.comments} setModalComentario={setModalComentario} listaComentarios={listaComentarios} setListaComentarios={setListaComentarios}/>
+              <Comentarios comentarios={data.comments} setModalComentario={setModalComentario} listaComentarios={listaComentarios} setListaComentarios={setListaComentarios} authorReceita={data.recipe.author}/>
             </div>
           </>
         }

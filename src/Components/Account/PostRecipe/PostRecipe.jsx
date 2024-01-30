@@ -127,7 +127,7 @@ const PostRecipe = () => {
           value={modoPreparo}
           setValue={setModoPreparo}
         />
-        <Input label="Tempo de Preparo (Minutos)" tipo="number" {...tempoPreparo}/>
+        <Input label="Tempo de Preparo (Minutos)" tipo="number" min={0} {...tempoPreparo}/>
         {enviado ? <Button nome="Postado!" /> :
           carregando ? 
             <Button nome="Postando..." estilo={{opacity: ".5"}}/>:

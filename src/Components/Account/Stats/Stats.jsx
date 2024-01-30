@@ -1,19 +1,26 @@
 import React from 'react';
-import style from './Stats.module.css';
-import Title from '../Helper/Titles/Title';
-import Head from '../../Helper/Head/Head';
+import { useDispatch, useSelector } from 'react-redux';
+import Error from '../../Helper/Error/Error';
+import {carregarTodasReceitas, resetToInitialState} from '../../../store/reducers/receitas';
+import Carregando from '../../Helper/Carregando/Carregando';
+const StatsGraphs = React.lazy(()=> import('./StatsGraphs'));
 
 const Stats = () => {
+  const {loading, erro, data} = useSelector((state)=> state.receitas);
+  const {id} = useSelector((state)=> state.login.user.data)
+  const dispatch = useDispatch();
+
+  React.useEffect(()=> {
+    dispatch(resetToInitialState());
+    dispatch(carregarTodasReceitas({total: 100, user: id}))
+  }, [dispatch, id]);
+
+  if(loading) return <Carregando />
+  if(erro) return <Error mensagem={erro}/>
   return (
-    <div className={`${style.statsContent} spaceContent animaLeft`}>
-      <Head titulo="Estatísticas" descricao="Aqui estão as estatísticas de suas postagens" />
-      <Title name="Estatísticas" />
-      <div>
-        <div>Acessos: </div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+    <React.Suspense fallback={<></>}>
+      <StatsGraphs data={data}/>
+    </React.Suspense>
   )
 }
 
