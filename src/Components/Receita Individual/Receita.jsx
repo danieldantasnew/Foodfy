@@ -27,7 +27,7 @@ const Receita = () => {
       if(response.ok) setData(json);
     }
 
-    handleRecipe()
+    handleRecipe();
   }, [params, setData, request]);
 
   React.useEffect(()=> {

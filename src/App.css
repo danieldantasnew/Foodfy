@@ -91,3 +91,27 @@ h1, h2 {
   color: var(--titulos);
   font-size: 1.7rem;
 }
+
+::-webkit-scrollbar {
+  background-color: white;
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4b321a;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-button {
+  background: url('../public/Images/icons/De uso Geral/ArrowScrollBar.svg') no-repeat center;
+}
+
+::-webkit-scrollbar-button:end {
+  background: url('../public/Images/icons/De uso Geral/ArrowScrollBarDropDown.svg') no-repeat center;
+}
+
+::-webkit-scrollbar-button:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+

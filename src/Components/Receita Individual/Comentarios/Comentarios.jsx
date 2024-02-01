@@ -28,7 +28,7 @@ const Comentarios = ({comentarios, setModalComentario, listaComentarios, setList
     if(comentarios) {
       comentarios.forEach((elemento)=> {
         if(listaComentarios.findIndex((comentario) => comentario.comment_ID === elemento.comment_ID) === -1) {
-          novaLista.push(elemento)
+          novaLista.push(elemento);
         }
       });
       setListaComentarios((listaComentarios)=> [...novaLista, ...listaComentarios]);
@@ -59,7 +59,7 @@ const Comentarios = ({comentarios, setModalComentario, listaComentarios, setList
         {listaComentarios.length > 0 ? 
         listaComentarios.map((comentario)=>
           <div key={comentario.comment_ID} className={style.comentario}>
-            <img src="../../../../public/Images/pngs/User.svg" alt="Imagem perfil usuário" />
+            <img src={`${comentario.foto_perfil ? comentario.foto_perfil : "../../../../public/Images/pngs/User.svg"}`} alt="Imagem perfil usuário" />
             <div className={style.comentarioInfo}>
               <div>
                 <div className={style.nomeAvaliacao}>

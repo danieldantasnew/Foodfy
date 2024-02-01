@@ -16,6 +16,7 @@
 
 .Textarea:focus, .Textarea:hover {
   box-shadow: 0px 0px 0px 1px var(--titulos), 0px 0px 0px 3px var(--subtitulos);
+  background-color: var(--de-fundo);
   transition: .3s;
 }
 

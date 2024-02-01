@@ -47,7 +47,7 @@
 
 @keyframes transitionMenu {
   to {
-    width: 50vw;
+    width: 55vw;
   }
 }
 
@@ -60,11 +60,12 @@
 }
 
 .contentMenu {
-  margin-top: 10vh;
-  padding-left: 24px;
+  margin-top: 5rem;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  height: calc(100% - 5rem);
 }
 
 .contentMenu nav ul {
