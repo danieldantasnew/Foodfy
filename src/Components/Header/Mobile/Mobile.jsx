@@ -7,7 +7,7 @@ import UsuarioLogado from '../UsuarioLogado/UsuarioLogado';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Mobile = () => {
+const Mobile = ({setEditarPerfil}) => {
 
   const [menu, setMenu] = React.useState(false);
   const logado = useSelector((state)=> state.login.user.data);
@@ -33,9 +33,13 @@ const Mobile = () => {
             <div>Busca</div>
             <Menu/>
             {logado ?
-              <UsuarioLogado displayName={logado.first_name}/> :
+              <UsuarioLogado 
+                displayName={logado.first_name} 
+                setEditarPerfil={setEditarPerfil}
+                setMenuMobile={setMenu}
+              /> :
               <BtnLogin />
-              }
+            }
           </div>
         </div>
       </> 

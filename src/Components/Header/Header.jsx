@@ -20,22 +20,26 @@ const Header = () => {
       {editarPerfil &&
         <>
           <Modal setFechar={setEditarPerfil} />
-          <Profile />
+          <Profile setEditarPerfil={setEditarPerfil}/>
         </>
       }
       <section className={`${style.Header} spaceContent`} style={mobile ? {justifyContent: 'start'} : {justifyContent: 'space-between'}}>
         <div className={mobile ? style.Header1Mobile : style.Header1}>
           <Logo/>
-          {mobile? <Mobile/> : <Menu/>}
+          {mobile ? 
+            <Mobile setEditarPerfil={setEditarPerfil}/> : 
+            <Menu/>
+          }
         </div>
-      {mobile ? '' :
-      <div className={style.Header2}>
-        <div><img src="../../../public/Images/icons/De uso Geral/busca.svg" alt="Buscar" />
-        </div>
-        {logado ?
-        <UsuarioLogado displayName={logado.first_name} setEditarPerfil={setEditarPerfil}/> :
-        <BtnLogin />}
-      </div>        
+      {!mobile &&
+        <div className={style.Header2}>
+          <div>
+            <img src="../../../public/Images/icons/De uso Geral/busca.svg" alt="Buscar" />
+          </div>
+          {logado ?
+          <UsuarioLogado displayName={logado.first_name} setEditarPerfil={setEditarPerfil}/> :
+          <BtnLogin />}
+        </div>        
       }
       </section>
     </header>

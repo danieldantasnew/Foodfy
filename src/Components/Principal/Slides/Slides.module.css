@@ -22,7 +22,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 2002;
-  background-color: #35333146;
+  background-color: #2e1a165b;
   width: 40px;
   height: 60px;
   border-radius: 4px;
@@ -35,7 +35,7 @@
 .btnActions:hover {
   transition: .2s;
   cursor: pointer;
-  background-color: #353331;
+  background-color: #2E1A16;
 }
 
 .btnActions img {

@@ -8,7 +8,7 @@ import {ReactComponent as Stats} from '../../../../public/Images/icons/De uso Ge
 import {ReactComponent as PostRecipe} from '../../../../public/Images/icons/De uso Geral/adicionar nova receita.svg';
 import {ReactComponent as LogOut} from '../../../../public/Images/icons/De uso Geral/Sair.svg';
 
-const UsuarioLogado = ({displayName, setEditarPerfil}) => {
+const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
   const location = useLocation();
   const [menu, setMenu] = React.useState(false);
   const perfil = useSelector((state)=> state.login.user.data.foto_perfil);
@@ -24,8 +24,9 @@ const UsuarioLogado = ({displayName, setEditarPerfil}) => {
   }, [location.pathname])
 
   function handleClick() {
-    setEditarPerfil(true)
+    setEditarPerfil(true);
     setMenu(false);
+    if(typeof setMenuMobile === 'function') setMenuMobile(false);
   }
  
   return (

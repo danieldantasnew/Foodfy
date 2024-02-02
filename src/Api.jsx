@@ -39,6 +39,20 @@ export function USER_POST(body) {
   }
 }
 
+export function USER_PUT(body, token) {
+  return {
+    url: url_API + '/api/user',
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:'Bearer '+ token
+      },
+      body: JSON.stringify(body)
+    }
+  }
+}
+
 export function RECIPES_GET({page, total, user}) {
   return {
     url: `${url_API}/api/recipe/?_page=${page}&_total=${total}&_user=${user}`,

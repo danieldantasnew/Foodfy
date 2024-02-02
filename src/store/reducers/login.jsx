@@ -56,7 +56,7 @@ const user = createAsyncSlice({
   }
 });
 
-const fetchUser = user.fetchElement;
+export const fetchUser = user.fetchElement;
 const estadoInicialUser = user.actions.returnInitialState;
 
 export const autoLogin = ()=> async (dispatch, getState) => {

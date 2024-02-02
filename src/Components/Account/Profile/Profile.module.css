@@ -4,6 +4,102 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: red;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 880px;
+}
+
+.contentProfile {
   background-color: white;
+  border-radius: 4px;
+  padding: 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: 400px;
+  gap: 1.5rem;
+  overflow: auto;
+}
+
+.contentProfile h2 {
+  text-align: center;
+  font-size: 2.7rem;
+}
+
+.imagemPerfil {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  align-items: center;
+}
+
+.imagem {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid var(--principal);
+}
+
+.imagem img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#inputFoto {
+  display: none;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.botoes button {
+  background-color: var(--de-fundo);
+  border: 1px solid var(--inputs);
+  padding: .4rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--tipo-secundaria);
+  font-weight: 500;
+  font-size: .9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .3rem;
+}
+
+.botoes button:first-child {
+  color: var(--links-externos);
+}
+
+.botoes button:last-child {
+  color: var(--delete);
+}
+
+.botoes button:hover {
+  cursor: pointer;
+  background-color: var(--inputs);
+}
+
+@media (max-width: 34.375rem) {
+  .contentProfile {
+    max-height: 680px;
+    grid-template-columns: 260px;
+  }
+}
+
+@media (max-width: 24rem) {
+  .contentProfile {
+    max-height: 440px;
+    grid-template-columns: 230px;
+  }
+
+  .imagem {
+    height: 180px;
+    width: 180px;
+  }
 }
