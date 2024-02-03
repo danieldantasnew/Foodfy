@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import style from './InfoReceita.module.css';
 import React from 'react';
 
-const InfoReceita = ({firstName, lastName, dificuldade, tempoPreparo, datePost}) => {
+const InfoReceita = ({firstName, lastName, dificuldade, tempoPreparo, datePost, user}) => {
 
   const [date, setDate] = React.useState('');
 
@@ -25,7 +26,9 @@ const InfoReceita = ({firstName, lastName, dificuldade, tempoPreparo, datePost})
     <div className={style.info}>
     <div className={style.subInfo}>
       <div className={style.autor}>
-        <p>por {firstName} {lastName}</p>
+        <p>por 
+          <Link to={`/perfil/${user}`}> {firstName} {lastName}</Link>
+        </p>
       </div>
       <div className={style.infoComplementar}>
         <p>

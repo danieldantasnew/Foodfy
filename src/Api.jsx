@@ -26,15 +26,12 @@ export function USER_GET(token) {
   }
 }
 
-export function USER_POST(body) {
+export function USER_POST(formData) {
   return {
     url: url_API + '/api/user',
     options: {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
+      body: formData
     }
   }
 }

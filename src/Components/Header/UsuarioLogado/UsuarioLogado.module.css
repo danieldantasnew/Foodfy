@@ -60,6 +60,7 @@
   animation: animaMenu .3s forwards;
   opacity: 0;
   overflow: hidden;
+  border-radius: 0px 0px 4px 4px;
 }
 
 @keyframes animaMenu {

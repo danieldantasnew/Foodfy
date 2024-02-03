@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import Error from '../../Helper/Error/Error';
 import { useNavigate } from 'react-router-dom';
 import Head from '../../Helper/Head/Head';
+import InputFiles from '../../Helper/InputFiles/InputFiles';
 
 const PostRecipe = () => {
   const categorias = useSelector((state)=> state.receitas.categorias);
@@ -39,20 +40,6 @@ const PostRecipe = () => {
     }
   }, [dados, navigate]);
 
-  function selecionarFoto() {
-    inputFile.current.click();
-  }
-
-  function handleChangeImage({target}) {
-    if(target.files.length > 0) {
-      const arquivo = target.files[0];
-      setImagem({
-        preview: URL.createObjectURL(arquivo),
-        raw: target.files[0],
-      })
-    }
-  }
-
   async function handleSubmit(event) {
     event.preventDefault();
     if(nomeReceita.validate() && descricao && ingredientes && modoPreparo && tempoPreparo.validate()) {
@@ -77,21 +64,7 @@ const PostRecipe = () => {
       <Head titulo="Poste sua receita" descricao="Poste uma nova receita!" />
       <Title name="Poste sua receita" />
       <form onSubmit={handleSubmit}>
-        <div 
-        className={Object.keys(imagem).length > 0 ? style.imagemReceitaPreenchida : style.imagemReceita}  
-        onClick={selecionarFoto}>
-          {Object.keys(imagem).length > 0 && 
-          <img 
-          src={imagem.preview} 
-          alt='Prévia da imagem da receita' 
-          />}
-          <input 
-          type="file" 
-          ref={inputFile} 
-          onChange={handleChangeImage} 
-          style={{display: "none"}}
-          />
-        </div>
+        <InputFiles imagem={imagem} setImagem={setImagem} inputFile={inputFile} />
         <Input tipo="text" label="Nome da Receita" {...nomeReceita}/>
         <TextArea 
         placeholder="Descreva sobre sua receita" 

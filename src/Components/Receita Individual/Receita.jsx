@@ -70,7 +70,8 @@ const Receita = () => {
             dificuldade={data.recipe.dificuldade} 
             firstName={data.recipe.firstName} 
             lastName={data.recipe.lastName} 
-            tempoPreparo={data.recipe.tempoPreparo} 
+            tempoPreparo={data.recipe.tempoPreparo}
+            user={data.recipe.author} 
             />
 
             <div className={style.contentInfo}>

@@ -1,7 +1,7 @@
 .Cadastro {
   padding: 0 4vw;
   align-self: flex-start;
-  margin: 10vh 0;
+  margin: 6vh 0;
   max-width: 40rem;
 }
 
@@ -9,6 +9,10 @@
   font-size: 4rem;
   font-weight: 600;
   margin-bottom: 4vh;
+}
+
+.Cadastro div:nth-child(2) {
+  height: 260px;
 }
 
 
