@@ -1,0 +1,74 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  max-height: 340px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.cards a {
+  text-align: center;
+  color: var(--opcs-header);
+}
+
+.cards a:hover {
+  color: var(--subtitulos);
+}
+
+.card {
+  background-color: #F8F8F8;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  height: 3.4rem;
+  width: 100%;
+  padding-right: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card:hover {
+  background-color:#dadada;
+  transition: .3s;
+}
+
+.card1 {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 60px 2fr;
+  height: 100%;
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1rem;
+  padding-left: 10px;
+  font-family: var(--tipo-principal);
+  font-weight: 600;
+  color: var(--titulos);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.card p{
+  font-size: 0.7rem;
+  font-family: var(--tipo-secundaria);
+  font-weight: 100;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--autor-card);
+}
+
+.descricao{
+  color: var(--titulos);
+}

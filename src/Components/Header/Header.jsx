@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import UsuarioLogado from './UsuarioLogado/UsuarioLogado';
 import Modal from '../Helper/Modal/Modal';
 import Profile from '../Account/Profile/Profile';
+import BuscaHeader from './BuscaHeader/BuscaHeader';
 
 const Header = () => {
   const mobile = useMedia("(max-width: 34.375rem)");
@@ -33,9 +34,7 @@ const Header = () => {
         </div>
       {!mobile &&
         <div className={style.Header2}>
-          <div>
-            <img src="../../../public/Images/icons/De uso Geral/busca.svg" alt="Buscar" />
-          </div>
+          <BuscaHeader/>
           {logado ?
           <UsuarioLogado displayName={logado.first_name} setEditarPerfil={setEditarPerfil}/> :
           <BtnLogin />}

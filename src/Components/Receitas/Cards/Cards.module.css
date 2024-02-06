@@ -46,11 +46,6 @@
   text-overflow: ellipsis;
 }
 
-/* .card h2:hover {
-  font-size: 0.7rem !important;
-  Adicionar lógica no javascript para que só se reduza o tamanho do título após certo tamanho, verificar histórico no chatgpt
-} */
-
 .info .subinfo {
   display: flex;
   flex-direction: row;    

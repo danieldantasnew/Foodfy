@@ -9,6 +9,7 @@ const receitas = createAsyncSlice({
     stopRecipes: false,
     categorias: ["Acompanhamentos","Arroz", "Aves", "Alimentação Saudável", "Bebidas", "Bolos e Tortas", "Carnes", "Doces e Sobremesas", "Iguaria", "Lanches", "Massas", "Peixes e Frutos do Mar", "Refeições", "Saladas e Molhos"],
     dificuldades: ["muito fácil", "fácil", "médio", "difícil", "avançado"],
+    search: '',
     filtros: {
       filtro: "",
       categoriaSelecionada: "Todas as Categorias",
@@ -29,6 +30,9 @@ const receitas = createAsyncSlice({
       //como estou retornando um objeto com name e value dentro do payload então consigo acessar categoriaSelecionada ou filtro, dependendo do action.payload.name que eu passar.
       state.filtros[action.payload.name] = action.payload.value;
     },
+    setSearch(state, action) {
+      state.search = action.payload;
+    },
     resetToInitialState(state) {
       state.loading = false; 
       state.data = null;
@@ -40,7 +44,7 @@ const receitas = createAsyncSlice({
 
 
 const fetchReceitas = receitas.fetchElement;
-export const {newRecipes, addNextPage, setFiltros, stopRecipes, resetToInitialState} = receitas.actions;
+export const {newRecipes, addNextPage, setFiltros, setSearch, stopRecipes, resetToInitialState} = receitas.actions;
 
 
 export const carregarReceitas = ({total, user}) => async(dispatch, getState) => {

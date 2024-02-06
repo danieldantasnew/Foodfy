@@ -1,0 +1,80 @@
+.busca {
+  cursor: pointer;
+}
+
+.busca svg {
+  height: 20px;
+  width: 20px;
+  margin-top: 6px;
+}
+
+.buscaAtiva {
+  position: relative;
+}
+
+.buscaAtiva input {
+  height: 1.5rem;
+  border-radius: 3rem;
+  outline: none;
+  border: 2px solid var(--label);
+  padding: 12px 12px 12px 24px;
+  animation: animation .7s forwards;
+  max-width: 160px;
+  width: 100%;
+  color: var(--titulos);
+  font-size: 1rem;
+  font-family: var(--tipo-secundaria);
+}
+
+@keyframes animation {
+  0% {
+    max-width: 0;
+  }
+}
+
+.buscaAtiva svg{
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  height: 18px;
+  width: 18px;
+}
+
+.buscaAtiva svg path{
+  stroke: var(--label);
+}
+
+.apontador {
+  height: 24px;
+  width: 24px;
+  background-color: var(--de-fundo);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 40px;
+  left: 18px;
+  z-index: 10;
+  animation: animaModal .3s forwards;
+  opacity: 1;
+}
+
+.modalBusca {
+  z-index: 11;
+  background-color: var(--de-fundo);
+  color: #000;
+  position: absolute;
+  top: 49px;
+  left: -75px;
+  width: 360px;
+  box-shadow: 0px 1.2px 0px .5px #2e1a1618;
+  padding: .5rem;
+  border-radius: 0px 0px 4px 4px;
+  animation: animaModal .3s forwards;
+  opacity: 1;
+}
+
+@keyframes animaModal {
+  0%{
+    height: 0;
+    opacity: 0;
+  }
+}
