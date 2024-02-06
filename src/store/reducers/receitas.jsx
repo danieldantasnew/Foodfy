@@ -12,6 +12,7 @@ const receitas = createAsyncSlice({
     filtros: {
       filtro: "",
       categoriaSelecionada: "Todas as Categorias",
+      input: "",
     }
   },
   reducers: {

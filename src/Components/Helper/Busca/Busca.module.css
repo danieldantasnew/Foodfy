@@ -7,11 +7,12 @@
 
 .Busca label img {
   position: absolute;
-  left: 13px;
-  top: 13px;
+  left: 14px;
+  top: 12px;
 }
 
 .Busca input {
   width: 100%;
   padding-left: 40px;
+  border-radius: 3rem;
 }

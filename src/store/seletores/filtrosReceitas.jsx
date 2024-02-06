@@ -13,6 +13,24 @@ export const filtroMaisAcessadas = createSelector((state)=> state.receitas.data,
   }
 });
 
+const removerAcentos = (str) => {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+};
+
+
+const valorDigitado = (valor) => (elemento) => {
+  if(!valor) return true;
+  else {
+    const frases = elemento.title.toUpperCase().split(' ')
+    //se na frase ele encontrar alguma palavra relacionada ao valor então ele irá retornar true
+    const valorSemAcento = removerAcentos(valor.toUpperCase());
+    return frases.some((palavra)=> {
+      const palavraSemAcento = removerAcentos(palavra);
+      return palavraSemAcento.includes(valorSemAcento)
+    })
+  }
+}
+
 const categoria = (categoriaSelecionada) => (elemento)=> {
   if(categoriaSelecionada === "Todas as Categorias") return true;
   else {
@@ -40,6 +58,6 @@ const filtro = (filtroSelecionado) => (elementoAtual, elementoProximo) => {
 
 export const filtroCategoria = createSelector((state) => state.receitas, (data)=> {
   return data.listRecipes.filter(categoria(data.filtros.categoriaSelecionada))
-  .sort(filtro(data.filtros.filtro));
+  .sort(filtro(data.filtros.filtro)).filter(valorDigitado(data.filtros.input));
 });
 

@@ -19,6 +19,10 @@
   gap: 3rem;
 }
 
+.grid:last-child {
+  margin-top: 6px;
+}
+
 .grid h1{
   font-size: 2.5rem;
   font-weight: 600;
