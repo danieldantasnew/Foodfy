@@ -23,7 +23,6 @@ const BuscaHeader = ({setMenu}) => {
     target.value.length > 0 ?
     setModal(true) :
     setModal(false);
-
     dispatch(setSearch(target.value));
   }
 
@@ -35,19 +34,23 @@ const BuscaHeader = ({setMenu}) => {
 
   function handleEnter(event) {
     if(event.key === 'Enter') {
-      navigate(`receitas?busca=${valorBuscaAtual}`)
+      navigate(`receitas?busca=${valorBuscaAtual}`);
+      if(window.location.pathname === '/receitas') {
+        window.location.reload();
+      }
     }
   }
 
   React.useEffect(()=> {
     if(modal) {
-      dispatch(carregarTodasReceitas({total: 200, user: 0}));
+      dispatch(carregarTodasReceitas({total: 0, user: 0}));
     }
   }, [dispatch, modal]);
 
 
   React.useEffect(()=> {
     setAtivo(false);
+    setModal(false);
     dispatch(setSearch(""));
   }, [location, dispatch]);
 

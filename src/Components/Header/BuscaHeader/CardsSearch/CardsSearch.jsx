@@ -1,9 +1,17 @@
 import { useSelector } from 'react-redux';
 import style from './CardsSearch.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CardsSearch = ({state}) => {
   const valorBuscaAtual = useSelector((state)=> state.receitas.search);
+  const navigate = useNavigate();
+  
+  function handleEnter() {
+    navigate(`receitas?busca=${valorBuscaAtual}`);
+    if(window.location.pathname === '/receitas') {
+      window.location.reload();
+    }
+  }
 
   return (
     <>
@@ -20,7 +28,7 @@ const CardsSearch = ({state}) => {
               </div>
             </Link>
           )}
-          <Link to={`receitas?busca=${valorBuscaAtual}`}>Ver todas as receitas relacionadas</Link>
+          <Link to={`receitas?busca=${valorBuscaAtual}`} onClick={handleEnter}>Ver todas as receitas relacionadas</Link>
         </div>
         :
         <p className={style.descricao}>Receita não encontrada</p>

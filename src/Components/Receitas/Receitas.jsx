@@ -19,13 +19,25 @@ const Receitas = ({total, user}) => {
   const loading = useSelector((state)=> state.receitas.loading);
   const state = useSelector(filtroCategoria);
   const {stopRecipes} = useSelector((state)=> state.receitas);
-  const urlParams = new URLSearchParams(window.location.search);
-  const busca = urlParams.get('busca');
+  const [busca, setBusca] = React.useState(null);
+ 
+  React.useEffect(()=> {
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams) {
+      setBusca(urlParams.get('busca'));
+    }
+  }, []);
 
 
   React.useEffect(()=> {
-    dispatch(carregarReceitas({total, user}))
-  }, [dispatch, total, user]);
+    if(busca || busca === '') {
+      dispatch(carregarReceitas({total: 0, user}))
+    }
+    else {
+      dispatch(carregarReceitas({total, user}))
+    }
+    
+  }, [dispatch, total, user, busca]);
 
   if(loading) return <Carregando/>
   return (
@@ -40,7 +52,7 @@ const Receitas = ({total, user}) => {
           </div>
         </div>
         <div className={style.grid}>
-          <Busca busca={busca}/>
+          <Busca busca={busca} setBusca={setBusca}/>
           {busca && <h2>Exibindo resultados para {`"${busca}"`}</h2>}
           <Cards state={state}/>
           {!stopRecipes && <CarregarMaisReceitas total={total} user={user}/>}
