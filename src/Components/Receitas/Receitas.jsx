@@ -19,6 +19,9 @@ const Receitas = ({total, user}) => {
   const loading = useSelector((state)=> state.receitas.loading);
   const state = useSelector(filtroCategoria);
   const {stopRecipes} = useSelector((state)=> state.receitas);
+  const urlParams = new URLSearchParams(window.location.search);
+  const busca = urlParams.get('busca');
+
 
   React.useEffect(()=> {
     dispatch(carregarReceitas({total, user}))
@@ -37,7 +40,8 @@ const Receitas = ({total, user}) => {
           </div>
         </div>
         <div className={style.grid}>
-          <Busca/>
+          <Busca busca={busca}/>
+          {busca && <h2>Exibindo resultados para {`"${busca}"`}</h2>}
           <Cards state={state}/>
           {!stopRecipes && <CarregarMaisReceitas total={total} user={user}/>}
           {stopRecipes && <p style={{textAlign: "center", color: "var(--principal)"}}>Não há mais receitas</p>}

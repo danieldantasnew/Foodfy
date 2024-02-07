@@ -20,7 +20,7 @@ const CardsSearch = ({state}) => {
               </div>
             </Link>
           )}
-          <Link to={`receitas?busca="${valorBuscaAtual}"`}>Ver todas as receitas relacionadas</Link>
+          <Link to={`receitas?busca=${valorBuscaAtual}`}>Ver todas as receitas relacionadas</Link>
         </div>
         :
         <p className={style.descricao}>Receita não encontrada</p>

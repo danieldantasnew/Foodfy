@@ -4,12 +4,21 @@ import style from './Busca.module.css';
 import { useDispatch } from 'react-redux';
 import { setFiltros } from '../../../store/reducers/receitas';
 
-const Busca = () => {
+const Busca = ({busca}) => {
   const dispatch = useDispatch();
 
   function handleChange({target}) {
     dispatch(setFiltros({name: 'input', value: target.value}));
   }
+
+  React.useEffect(()=> {
+    if(busca) {
+      dispatch(setFiltros({name: 'input', value: busca}));
+    }
+    else {
+      dispatch(setFiltros({name: 'input', value: ""}));
+    }
+  }, [busca, dispatch]);
 
   return (
     <div className={`${style.Busca}`}>
