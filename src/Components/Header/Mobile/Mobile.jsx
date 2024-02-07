@@ -6,6 +6,7 @@ import Modal from '../../Helper/Modal/Modal';
 import UsuarioLogado from '../UsuarioLogado/UsuarioLogado';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import BuscaHeader from '../BuscaHeader/BuscaHeader';
 
 const Mobile = ({setEditarPerfil}) => {
 
@@ -30,7 +31,7 @@ const Mobile = ({setEditarPerfil}) => {
         <div className={style.menuMobile}>
           <div onClick={()=> setMenu(!menu)} className={style.menuClose}><img src="../../../../public/Images/icons/De uso Geral/btn-menu-close.svg" alt="Fechar menu" /></div>
           <div className={style.contentMenu}>
-            <div>Busca</div>
+            <BuscaHeader setMenu={setMenu}/>
             <Menu/>
             {logado ?
               <UsuarioLogado 

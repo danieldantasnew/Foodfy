@@ -72,3 +72,10 @@
 .descricao{
   color: var(--titulos);
 }
+
+@media (max-width: 34.375rem) {
+  .cards {
+    max-height: 90vh;
+    width: 100%;
+  }
+}

@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const CardsSearch = ({state}) => {
   const valorBuscaAtual = useSelector((state)=> state.receitas.search);
-  
+
   return (
     <>
-      {state ? 
+      {state.length > 0 ? 
         <div className={style.cards}>
           {state.map((receita)=> 
              <Link to={`receita/${receita.id}`} key={receita.id}>
@@ -20,7 +20,7 @@ const CardsSearch = ({state}) => {
               </div>
             </Link>
           )}
-          <Link to={`receitas/?busca="${valorBuscaAtual}"`}>Ver todas as receitas</Link>
+          <Link to={`receitas?busca="${valorBuscaAtual}"`}>Ver todas as receitas relacionadas</Link>
         </div>
         :
         <p className={style.descricao}>Receita não encontrada</p>
