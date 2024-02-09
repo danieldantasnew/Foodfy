@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import style from './BuscaHeader.module.css';
 import {ReactComponent as SearchIcon} from '../../../../public/Images/icons/De uso Geral/busca.svg';
 import {ReactComponent as Close} from "../../../../public/Images/icons/De uso Geral/btn-menu-close.svg"
@@ -17,6 +17,7 @@ const BuscaHeader = ({setMenu}) => {
   const mobile = useMedia("(max-width: 34.375rem)");
   const busca = useSelector(searchSelector);
   const valorBuscaAtual = useSelector((state)=> state.receitas.search);
+  const refSearch = useRef();
   const navigate = useNavigate();
 
   function handleChange({target}) {
@@ -54,28 +55,42 @@ const BuscaHeader = ({setMenu}) => {
     dispatch(setSearch(""));
   }, [location, dispatch]);
 
+  React.useEffect(()=> {
+    let closeSearch = (event)=> {
+      if(!refSearch.current.contains(event.target) && !mobile) {
+        setModal(false);
+        setAtivo(false);
+      }
+    }
+    document.addEventListener('click', closeSearch);
+
+    return ()=> {
+      document.removeEventListener('click', closeSearch);
+    }
+  });
+
   return (
-    <>
+    <div ref={refSearch}>
       {ativo && !mobile ? 
-       <div className={style.buscaAtiva}>
-        <SearchIcon/>
-        <input 
-          type="text" 
-          onChange={handleChange}
-          onKeyDown={handleEnter}
-        />
-        {modal &&
-          <>
-            <div className={style.apontador}></div>
-            <div className={style.modalBusca}>
-              <CardsSearch state={busca}/>
-            </div>
-          </>
-        }
-       </div>
+        <div className={style.buscaAtiva} >
+          <SearchIcon/>
+          <input 
+            type="text" 
+            onChange={handleChange}
+            onKeyDown={handleEnter}
+          />
+          {modal &&
+            <>
+              <div className={style.apontador}></div>
+              <div className={style.modalBusca}>
+                <CardsSearch state={busca}/>
+              </div>
+            </>
+          }
+        </div>
        :
         <>
-        {!mobile ? 
+          {!mobile ? 
             <div className={style.busca} onClick={()=> setAtivo(!ativo)}>
               <SearchIcon/>
             </div>
@@ -119,7 +134,7 @@ const BuscaHeader = ({setMenu}) => {
           }
         </>
       }
-    </>
+    </div>
   )
 }
 

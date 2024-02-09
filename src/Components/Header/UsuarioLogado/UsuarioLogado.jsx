@@ -14,32 +14,45 @@ const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
   const perfil = useSelector((state)=> state.login.user.data.foto_perfil);
   const nomeCompleto = useSelector((state)=> state.login.user.data?.display_name);
   const dispatch = useDispatch();
+  const refMenu = React.useRef();
+  const menuActive = React.useRef();
 
   function handleLogOut() {
     dispatch(logOut());
   }
-
-  React.useEffect(()=> {
-    setMenu(false);
-  }, [location.pathname])
 
   function handleClick() {
     setEditarPerfil(true);
     setMenu(false);
     if(typeof setMenuMobile === 'function') setMenuMobile(false);
   }
- 
+
+  React.useEffect(()=> {
+    setMenu(false);
+  }, [location.pathname]);
+
+  React.useEffect(()=> {
+    let closeMenu = (event)=> {
+      if(!refMenu.current.contains(event.target)) setMenu(false);
+    }
+
+    document.addEventListener('click', closeMenu);
+
+    return ()=> {
+      document.removeEventListener('click', closeMenu);
+    }
+  });
+  
+
   return (
-    <>
-    <div className={style.UsuarioLogado} onClick={()=> setMenu(!menu)}>
+    <div className={style.UsuarioLogado} onClick={()=> setMenu(!menu)} ref={refMenu}>
       {displayName}
       <img className={`${perfil ? style.usuarioComImagem : style.usuarioSemImagem}`} src={`${perfil ? perfil :"../../../../public/Images/pngs/UserLog.svg"}`} alt="Foto perfil do usuário" />
       <div className={!menu ? style.dropDown : style.dropDownActive}>
         <img src="../../../../public/Images/icons/De uso Geral/ArrowDropdown.svg" alt="" />
       </div>
-    </div>
-    {menu &&
-      <nav className={style.Menu}>
+      {menu &&
+      <nav className={style.Menu} ref={menuActive}>
         <div className={style.perfilMenu}>
           <div className={style.imagemBotao}>
             <img src={`${perfil ? perfil :"../../../../public/Images/pngs/UserLog.svg"}`} alt="Foto do perfil" className={`${perfil ? `${style.usuarioComImagem} ${style.perfil}` : style.usuarioSemImagem}`}/>
@@ -75,7 +88,7 @@ const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
         </ul>
       </nav>
     }
-    </>
+    </div>
   )
 }
 

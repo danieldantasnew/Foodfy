@@ -10,6 +10,7 @@ import {fetchUser} from '../../../store/reducers/login';
 import Error from '../../Helper/Error/Error';
 
 const Profile = ({setEditarPerfil}) => {
+  const [atualizado, setAtualizado] = React.useState(false);
   const nome = useValidate();
   const sobrenome = useValidate();
   const emailData = useValidate('email');
@@ -64,7 +65,10 @@ const Profile = ({setEditarPerfil}) => {
       const {response} = await request(url, options);
       if(response.ok) {
         dispatch(fetchUser(token));
-        setEditarPerfil(false);
+        setAtualizado(true);
+        setTimeout(()=> {
+          setEditarPerfil(false);
+        }, 2000);
       }
     }
   }
@@ -117,7 +121,10 @@ const Profile = ({setEditarPerfil}) => {
           <Input label="Email" tipo="email" {...emailData}/>
           <Input label="Nova Senha" tipo="password" placeholder="Digite sua nova senha caso deseje alterá-la"{...password}/>
           {carregando ? 
-            <Button nome="Atualizando perfil..." estilo={{opacity: ".5"}} disabled /> : 
+            <Button nome="Atualizando perfil..." estilo={{opacity: ".5"}} disabled /> :
+            atualizado ?  
+            <Button nome="Atualizado!" /> 
+            :
             <Button nome="Atualizar perfil" />
           }
           {erro && <Error mensagem={erro}/>}
