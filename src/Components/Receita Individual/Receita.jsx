@@ -11,6 +11,7 @@ import Editar from './EditarConteudo/Editar';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error/Error';
 import EditarComentario from './Comentarios/Comentar/EditarComentario/EditarComentario';
+import Head from '../Helper/Head/Head';
 
 const Receita = () => {
   const params = useParams();
@@ -56,6 +57,7 @@ const Receita = () => {
       <div className={`${style.content} spaceContent`}>
         {data && 
           <>
+            <Head titulo={data.recipe.nome} descricao={`Informações da receita ${data.recipe.nome}`}/>
             <ImagemReceita 
             nome={data.recipe.nome} 
             src={data.recipe.src}

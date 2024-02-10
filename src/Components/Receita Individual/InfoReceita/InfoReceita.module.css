@@ -18,6 +18,10 @@
   color: var(--subtitulos);
 }
 
+.autor a:hover {
+  text-decoration: underline;
+}
+
 .infoComplementar {
   font-weight: 300;
   display: flex;
