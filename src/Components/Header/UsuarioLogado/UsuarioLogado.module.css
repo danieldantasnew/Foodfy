@@ -51,7 +51,7 @@
 
 .Menu {
   position: absolute;
-  top: 53px;
+  top: 50px;
   right: 0;
   width: 240px;
   height: 0;
@@ -61,6 +61,10 @@
   opacity: 0;
   overflow: hidden;
   border-radius: 0px 0px 4px 4px;
+}
+
+.MenuTop {
+  top: 53px !important;
 }
 
 @keyframes animaMenu {

@@ -52,7 +52,7 @@ const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
         <img src="../../../../public/Images/icons/De uso Geral/ArrowDropdown.svg" alt="" />
       </div>
       {menu &&
-      <nav className={style.Menu} ref={menuActive}>
+      <nav className={`${perfil ? `${style.Menu} ${style.MenuTop}` : style.Menu}`} ref={menuActive}>
         <div className={style.perfilMenu}>
           <div className={style.imagemBotao}>
             <img src={`${perfil ? perfil :"../../../../public/Images/pngs/UserLog.svg"}`} alt="Foto do perfil" className={`${perfil ? `${style.usuarioComImagem} ${style.perfil}` : style.usuarioSemImagem}`}/>

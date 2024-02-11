@@ -36,8 +36,9 @@ const Header = () => {
         <div className={style.Header2}>
           <BuscaHeader/>
           {logado ?
-          <UsuarioLogado displayName={logado.first_name} setEditarPerfil={setEditarPerfil}/> :
-          <BtnLogin />}
+            <UsuarioLogado displayName={logado.first_name} setEditarPerfil={setEditarPerfil}/> :
+            <BtnLogin />
+          }
         </div>        
       }
       </section>
