@@ -60,6 +60,7 @@ const BuscaHeader = ({setMenu}) => {
       if(!refSearch.current.contains(event.target) && !mobile) {
         setModal(false);
         setAtivo(false);
+        document.removeEventListener('click', closeSearch);
       }
     }
     document.addEventListener('click', closeSearch);

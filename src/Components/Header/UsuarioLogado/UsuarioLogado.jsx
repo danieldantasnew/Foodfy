@@ -33,7 +33,10 @@ const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
 
   React.useEffect(()=> {
     let closeMenu = (event)=> {
-      if(!refMenu.current.contains(event.target)) setMenu(false);
+      if(!refMenu.current.contains(event.target)) {
+        document.removeEventListener('click', closeMenu);
+        setMenu(false);
+      }
     }
 
     document.addEventListener('click', closeMenu);

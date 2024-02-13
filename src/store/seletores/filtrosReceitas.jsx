@@ -17,7 +17,7 @@ export const filtroMaisAcessadas = createSelector((state)=> state.receitas.data,
 const categoria = (categoriaSelecionada) => (elemento)=> {
   if(categoriaSelecionada === "Todas as Categorias") return true;
   else {
-   return elemento.categoria == categoriaSelecionada;
+   return elemento.categorias.includes(categoriaSelecionada);
   }
 }
 

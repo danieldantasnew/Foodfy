@@ -5,6 +5,7 @@ import Button from '../../Helper/Button/Button';
 import Textarea from '../../Helper/TextArea/Textarea';
 import styleLabel from '../../Helper/Input/Input.module.css';
 import Select from '../../Helper/Select/Select';
+import MultipleSelect from '../../Helper/MultipleSelect/MultipleSelect';
 import { useSelector } from 'react-redux';
 import useFetch from '../../../Hooks/useFetch';
 import { RECIPE_PUT } from '../../../Api';
@@ -16,7 +17,7 @@ const Editar = ({data}) => {
   
   const [descricao, setDescricao] = React.useState(data.recipe.descricao);
   const [dificuldade, setDificuldade] = React.useState(data.recipe.dificuldade);
-  const [categoria, setCategoria] = React.useState(data.recipe.categoria);
+  const [categoria, setCategoria] = React.useState(data.recipe.categorias);
   const [ingredientes, setIngredientes] = React.useState(data.recipe.ingredientes);
   const [modoPreparo, setModoPreparo] = React.useState(data.recipe.modoPreparo);
   const[tempoPreparo, setTempoPreparo] = React.useState(data.recipe.tempoPreparo);
@@ -28,17 +29,21 @@ const Editar = ({data}) => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const {url, options} = RECIPE_PUT({
-      descricao,
-      categoria,
-      dificuldade,
-      ingredientes,
-      modoPreparo,
-      tempoPreparo
-    }, token, id)
-    const {response} = await request(url, options);
-    if(response.ok) window.location.reload();
-    else setErro('Não foi possível atualizar receita, verifique se você preencheu todas as informações corretamente.');
+    if(categoria.length > 0) {
+      const formataCategoria = categoria.join('$$');
+
+      const {url, options} = RECIPE_PUT({
+        descricao,
+        categoria: formataCategoria,
+        dificuldade,
+        ingredientes,
+        modoPreparo,
+        tempoPreparo
+      }, token, id)
+      const {response} = await request(url, options);
+      if(response.ok) window.location.reload();
+      else setErro('Não foi possível atualizar receita, verifique se você preencheu todas as informações corretamente.');
+    }
   }
 
   function handleInput({target}) {
@@ -71,11 +76,12 @@ const Editar = ({data}) => {
             value={dificuldade}
             setValue={setDificuldade}
           />
-          <Select 
-            array={listaCategorias} 
-            name="Categoria" 
-            value={categoria}
-            setValue={setCategoria}
+          <MultipleSelect 
+            name="Categorias" 
+            array={listaCategorias}
+            selects={categoria} 
+            setSelects={setCategoria}
+            setErro={setErro}
           />
         </div>
           <Textarea 
