@@ -12,7 +12,7 @@ const MenuOpcs = ({setModal, setMenu, id}) => {
 
   function handleClick() {
     setMenu((menu)=> !menu);
-    setModal((modal)=>!modal)
+    setModal((modal)=>!modal);
   }
 
   async function handleDelete() {

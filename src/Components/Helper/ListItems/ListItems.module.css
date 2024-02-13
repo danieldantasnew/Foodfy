@@ -1,0 +1,42 @@
+.ListItems {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.ListItems li {
+  position: relative;
+}
+
+.inputs {
+  width: 100%;
+}
+
+.organizeBtns {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -3.9rem;
+  display: flex;
+  gap: .4rem;
+}
+
+.btnActions {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btnActions svg{
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+}
+
+
+
+@media (max-width: 56.875rem) {
+  .organizeBtns {
+    right: 10px;
+  }
+}

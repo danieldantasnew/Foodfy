@@ -2,9 +2,8 @@ import React from 'react';
 import {ReactComponent as Dropdown} from '../../../../public/Images/icons/Receitas/Dropdown.svg'
 import style from './MultipleSelect.module.css';
 import styleLabel from '../Input/Input.module.css';
-import Error from '../Error/Error';
 
-const MultipleSelect = ({name, array, selects, setSelects, erro, setErro}) => {
+const MultipleSelect = ({name, array, selects, setSelects, setErro}) => {
 
   const [open, setOpen] = React.useState(null);
   const refCategoria = React.useRef();
@@ -37,7 +36,7 @@ const MultipleSelect = ({name, array, selects, setSelects, erro, setErro}) => {
 
   React.useEffect(()=> {
     if(selects.length > 0) setErro(null);
-    else setErro('Preencha ao menos uma categoria');
+    else setErro('Selecione ao menos uma categoria');
   }, [selects, setErro]);
   
   return (
@@ -65,7 +64,6 @@ const MultipleSelect = ({name, array, selects, setSelects, erro, setErro}) => {
         </ul>
       }
     </div>
-    {erro && <Error mensagem={erro}/>}
   </label>
   )
 }

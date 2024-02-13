@@ -2,22 +2,6 @@ import React from 'react';
 import style from './Dim.module.css';
 
 const Dim = ({descricao, ingredientes, modoPreparo}) => {
-  const[modoDePreparo, setModoDePreparo] = React.useState(null);
-  const[ingredientesFormatado, setIngredientesFormatado] = React.useState(null);
-
-  React.useEffect(()=> {
-    if(modoPreparo) {
-      const organizaModoPreparo = modoPreparo.split('.');
-      organizaModoPreparo.pop();
-      setModoDePreparo(organizaModoPreparo);
-    }
-
-    if(ingredientes) {
-      const organizaIngredientes = ingredientes.split('.');
-      setIngredientesFormatado(organizaIngredientes);
-      organizaIngredientes.pop();
-    }
-  }, [modoPreparo, setModoDePreparo, ingredientes]);
 
   return (
     <div className={style.Dim}>
@@ -28,7 +12,7 @@ const Dim = ({descricao, ingredientes, modoPreparo}) => {
       <div className={style.ingredientes}>
         <h2>Ingredientes</h2>
         <ul>
-          {ingredientesFormatado && ingredientesFormatado.map((ingrediente, index) =>
+          {ingredientes && ingredientes.map((ingrediente, index) =>
             <li key={index}>{ingrediente}</li>
           )}
         </ul>
@@ -36,7 +20,7 @@ const Dim = ({descricao, ingredientes, modoPreparo}) => {
       <div className={style.modoPreparo}>
         <h2>Modo de Preparo</h2>
         <ol>
-        {modoDePreparo && modoDePreparo.map((instrucao, index)=> 
+        {modoPreparo && modoPreparo.map((instrucao, index)=> 
           <li key={index}>{instrucao}</li>
         )}
         </ol>

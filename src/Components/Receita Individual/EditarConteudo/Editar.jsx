@@ -6,6 +6,7 @@ import Textarea from '../../Helper/TextArea/Textarea';
 import styleLabel from '../../Helper/Input/Input.module.css';
 import Select from '../../Helper/Select/Select';
 import MultipleSelect from '../../Helper/MultipleSelect/MultipleSelect';
+import ListItems from '../../Helper/ListItems/ListItems';
 import { useSelector } from 'react-redux';
 import useFetch from '../../../Hooks/useFetch';
 import { RECIPE_PUT } from '../../../Api';
@@ -20,7 +21,7 @@ const Editar = ({data}) => {
   const [categoria, setCategoria] = React.useState(data.recipe.categorias);
   const [ingredientes, setIngredientes] = React.useState(data.recipe.ingredientes);
   const [modoPreparo, setModoPreparo] = React.useState(data.recipe.modoPreparo);
-  const[tempoPreparo, setTempoPreparo] = React.useState(data.recipe.tempoPreparo);
+  const [tempoPreparo, setTempoPreparo] = React.useState(data.recipe.tempoPreparo);
   const {request} = useFetch();
   const[erro, setErro] = React.useState(null);
 
@@ -31,13 +32,15 @@ const Editar = ({data}) => {
     event.preventDefault();
     if(categoria.length > 0) {
       const formataCategoria = categoria.join('$$');
+      const formataIngredientes = ingredientes.join('$$');
+      const formataModoPreparo = modoPreparo.join('$$');
 
       const {url, options} = RECIPE_PUT({
         descricao,
         categoria: formataCategoria,
         dificuldade,
-        ingredientes,
-        modoPreparo,
+        ingredientes: formataIngredientes,
+        modoPreparo: formataModoPreparo,
         tempoPreparo
       }, token, id)
       const {response} = await request(url, options);
@@ -84,22 +87,21 @@ const Editar = ({data}) => {
             setErro={setErro}
           />
         </div>
-          <Textarea 
-            placeholder={"Insira um ingrediente por linha"}
-            name={"Ingredientes"}
-            value={ingredientes}
-            setValue={setIngredientes}
-          />
-          <Textarea 
-            name={"Modo de Preparo"}
-            value={modoPreparo}
-            setValue={setModoPreparo}
-          />
-          <label htmlFor="tempoPreparo" className={styleInput.Label}>
-            Tempo de Preparo (Minutos)
-            <input type="number" id="tempoPreparo" onChange={handleInput} value={tempoPreparo} className={styleInput.Input}/>
-          </label>
-        <Button  nome="Atualizar receita" />
+        <ListItems
+          name="Ingredientes" 
+          value={ingredientes}
+          setValue={setIngredientes}
+        />
+        <ListItems
+          name="Modo de Preparo"
+          value={modoPreparo}
+          setValue={setModoPreparo}
+        />
+        <label htmlFor="tempoPreparo" className={styleInput.Label}>
+          Tempo de Preparo (Minutos)
+          <input type="number" id="tempoPreparo" onChange={handleInput} value={tempoPreparo} className={styleInput.Input}/>
+        </label>
+        <Button nome="Atualizar receita" />
       </form>
       {erro && <Error mensagem={erro}/>}
     </div>

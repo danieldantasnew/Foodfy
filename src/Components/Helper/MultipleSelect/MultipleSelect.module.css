@@ -44,9 +44,11 @@
 
 .listaCategoria li:hover {
   cursor: pointer;
-  background-color: var(--inputs);
+  background-color: #be8e62ce;
+  color: var(--label);
 }
 
 .checked {
-  background-color: var(--inputs);
+  background-color: var(--titulo-receita);
+  color: var(--de-fundo);
 }

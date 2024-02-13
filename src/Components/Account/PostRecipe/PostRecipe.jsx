@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import Head from '../../Helper/Head/Head';
 import InputFiles from '../../Helper/InputFiles/InputFiles';
 import MultipleSelect from '../../Helper/MultipleSelect/MultipleSelect';
+import ListItems from '../../Helper/ListItems/ListItems';
 
 const PostRecipe = () => {
   const categorias = useSelector((state)=> state.receitas.categorias);
@@ -29,8 +30,8 @@ const PostRecipe = () => {
   const [descricao, setDescricao] = React.useState('');
   const [categoria, setCategoria] = React.useState([categorias[0]]);
   const [dificuldade, setDificuldade] = React.useState(dificuldades[0]);
-  const [ingredientes, setIngredientes] = React.useState('');
-  const [modoPreparo, setModoPreparo] = React.useState('');
+  const [ingredientes, setIngredientes] = React.useState(['']);
+  const [modoPreparo, setModoPreparo] = React.useState(['']);
   const tempoPreparo = useValidate();
 
   React.useEffect(()=> {
@@ -43,17 +44,19 @@ const PostRecipe = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if(nomeReceita.validate() && descricao && ingredientes && modoPreparo && tempoPreparo.validate() && categoria.length > 0) {
+    if(nomeReceita.validate() && descricao && ingredientes.length > 0 && modoPreparo.length > 0 && tempoPreparo.validate() && categoria.length > 0) {
       const formData = new FormData();
       const envioCategorias = categoria.join('$$');
+      const envioIngredientes = ingredientes.join('$$');
+      const envioModoPreparo = modoPreparo.join('$$');
 
       formData.append('img', imagem.raw);
       formData.append('nome', nomeReceita.data);
       formData.append('descricao', descricao);
       formData.append('categoria', envioCategorias);
       formData.append('dificuldade', dificuldade);
-      formData.append('ingredientes', ingredientes);
-      formData.append('modoPreparo', modoPreparo);
+      formData.append('ingredientes', envioIngredientes);
+      formData.append('modoPreparo', envioModoPreparo);
       formData.append('tempoPreparo', tempoPreparo.data);
       
       const {url, options} = RECIPE_POST(formData, token);
@@ -97,15 +100,13 @@ const PostRecipe = () => {
             setErro={setErro}
           />
         </div>
-        <TextArea 
-            name="Ingredientes" 
-            placeholder='Separe os ingredientes por ponto (".")' 
-            value={ingredientes}
-            setValue={setIngredientes}
+        <ListItems
+          name="Ingredientes" 
+          value={ingredientes}
+          setValue={setIngredientes}
         />
-        <TextArea 
-          name="Modo de Preparo" 
-          placeholder='Separe as etapas por ponto (".")'
+        <ListItems
+          name="Modo de Preparo"
           value={modoPreparo}
           setValue={setModoPreparo}
         />
