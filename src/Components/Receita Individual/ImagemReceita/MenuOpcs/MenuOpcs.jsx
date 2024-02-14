@@ -22,7 +22,7 @@ const MenuOpcs = ({setModal, setMenu, id}) => {
       const {response, json} = await request(url, options);
       if(response.ok) {
         window.alert(json);
-        navigate('/receitas');
+        navigate('/conta');
         window.location.reload();
       }
       else window.alert('Erro: não foi possível deletar receita.');

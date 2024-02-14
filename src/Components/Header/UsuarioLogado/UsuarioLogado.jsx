@@ -55,42 +55,42 @@ const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
         <img src="../../../../public/Images/icons/De uso Geral/ArrowDropdown.svg" alt="" />
       </div>
       {menu &&
-      <nav className={`${perfil ? `${style.Menu} ${style.MenuTop}` : style.Menu}`} ref={menuActive}>
-        <div className={style.perfilMenu}>
-          <div className={style.imagemBotao}>
-            <img src={`${perfil ? perfil :"../../../../public/Images/pngs/UserLog.svg"}`} alt="Foto do perfil" className={`${perfil ? `${style.usuarioComImagem} ${style.perfil}` : style.usuarioSemImagem}`}/>
-            <button onClick={handleClick}>
-              <img src="../../../../public/Images/icons/De uso Geral/EditarPerfil.png" alt="Editar perfil" />
-            </button>
+        <nav className={`${perfil ? `${style.Menu} ${style.MenuTop}` : style.Menu}`} ref={menuActive}>
+          <div className={style.perfilMenu}>
+            <div className={style.imagemBotao}>
+              <img src={`${perfil ? perfil :"../../../../public/Images/pngs/UserLog.svg"}`} alt="Foto do perfil" className={`${perfil ? `${style.usuarioComImagem} ${style.perfil}` : style.usuarioSemImagem}`}/>
+              <button onClick={handleClick}>
+                <img src="../../../../public/Images/icons/De uso Geral/EditarPerfil.png" alt="Editar perfil" />
+              </button>
+            </div>
+            <p>{nomeCompleto}</p>
           </div>
-          <p>{nomeCompleto}</p>
-        </div>
-        <ul>
-          <NavLink to='/conta' end>
-            <li>
-              <Recipes/>
-              Minhas Receitas
+          <ul>
+            <NavLink to='/conta' end>
+              <li>
+                <Recipes/>
+                Minhas Receitas
+              </li>
+            </NavLink>
+            <NavLink to='/conta/estatisticas'>
+              <li className={style.strokeColor}>
+                <Stats/>
+                Estatísticas
+              </li>
+            </NavLink>
+            <NavLink to='/conta/postar'>
+              <li className={style.strokeColor}>
+                <PostRecipe/>
+                Postar Receita
+              </li>
+            </NavLink>
+            <li onClick={handleLogOut}>
+              <LogOut/>
+              Sair
             </li>
-          </NavLink>
-          <NavLink to='/conta/estatisticas'>
-            <li className={style.strokeColor}>
-              <Stats/>
-              Estatísticas
-            </li>
-          </NavLink>
-          <NavLink to='/conta/postar'>
-            <li className={style.strokeColor}>
-              <PostRecipe/>
-              Postar Receita
-            </li>
-          </NavLink>
-          <li onClick={handleLogOut}>
-            <LogOut/>
-            Sair
-          </li>
-        </ul>
-      </nav>
-    }
+          </ul>
+        </nav>
+      }
     </div>
   )
 }

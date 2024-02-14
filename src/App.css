@@ -91,6 +91,11 @@ h1, h2 {
   color: var(--titulos);
   font-size: 1.7rem;
 }
+@media (max-width: 24.3rem) {
+  h1, h2 {
+    line-height: 2rem !important;
+  }
+}
 
 ::-webkit-scrollbar {
   background-color: white;

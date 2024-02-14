@@ -168,7 +168,7 @@ a:global(.active) path {
   }
 
   .Menu {
-    position: initial;
+    left: 0;
     width: auto;
     background-color: var(--principal);
     overflow: auto;
@@ -201,5 +201,11 @@ a:global(.active) path {
   .strokeColor:hover :global(path),
   a:global(.active) path {
     stroke: var(--de-fundo);
+  }
+}
+
+@media (max-width: 22.5rem) and (max-height: 37.5rem) {
+  .Menu {
+    max-height: 190px;
   }
 }
