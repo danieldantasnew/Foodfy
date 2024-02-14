@@ -31,7 +31,8 @@ const ListItems = ({name, value, setValue}) => {
   }
 
   return (
-    <label className={styleLabel.Label}>
+    <label className={styleLabel.Label} htmlFor=''>
+      {/* htmlfor vazio necessário para evitar bug no hover */}
       {name}
       <ul className={style.ListItems}>
         {value.map((item, index)=> 

@@ -63,6 +63,12 @@ const PostRecipe = () => {
       const {response} = await request(url, options);
       if(response.ok) setEnviado(true);
     }
+    else {
+      setErro('Impossível postar receita, verifique se todas as informações estão preenchidas!');
+      setTimeout(()=> {
+        setErro(null);
+      }, 2000);
+    }
   }
 
   return (

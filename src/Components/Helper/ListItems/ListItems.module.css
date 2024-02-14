@@ -10,13 +10,14 @@
 
 .inputs {
   width: 100%;
+  padding-right: 4.1rem;
 }
 
 .organizeBtns {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: -3.9rem;
+  right: 10px;
   display: flex;
   gap: .4rem;
 }
@@ -31,12 +32,4 @@
   height: 24px;
   width: 24px;
   background-size: contain;
-}
-
-
-
-@media (max-width: 56.875rem) {
-  .organizeBtns {
-    right: 10px;
-  }
 }
