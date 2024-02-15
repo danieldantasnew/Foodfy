@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import style from './UsuarioLogado.module.css';
 import React from 'react';
 import { logOut } from '../../../store/reducers/login';
@@ -14,11 +14,13 @@ const UsuarioLogado = ({displayName, setEditarPerfil, setMenuMobile}) => {
   const perfil = useSelector((state)=> state.login.user.data.foto_perfil);
   const nomeCompleto = useSelector((state)=> state.login.user.data?.display_name);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const refMenu = React.useRef();
   const menuActive = React.useRef();
 
   function handleLogOut() {
     dispatch(logOut());
+    navigate('/login');
   }
 
   function handleClick() {
